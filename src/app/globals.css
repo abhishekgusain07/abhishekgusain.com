@@ -40,6 +40,7 @@
     --input: 240 5.9% 90%;
     --ring: 240 5.9% 10%;
     --radius: 0.5rem;
+    --theme-transition-duration: 0.8s;
   }
 
   .dark {
@@ -71,6 +72,36 @@
   body {
     @apply bg-white text-neutral-7 selection:bg-neutral-3 selection:text-neutral-8 dark:bg-black dark:text-neutral-dark-7 dark:selection:bg-neutral-dark-3 dark:selection:text-neutral-dark-8;
     font-family: 'Innovator Grotesk', sans-serif;
+  }
+
+  ::view-transition-group(root) {
+    animation-duration: var(--theme-transition-duration);
+  }
+
+  ::view-transition-old(root) {
+    animation: none;
+    mix-blend-mode: normal;
+    z-index: 1;
+  }
+
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+    animation: theme-reveal var(--theme-transition-duration) ease-out forwards;
+    z-index: 2;
+  }
+
+  @keyframes theme-reveal {
+    from {
+      clip-path: circle(0% at 0% 0%);
+    }
+    to {
+      clip-path: circle(150% at 0% 0%);
+    }
+  }
+
+  ::view-transition-image-pair(root) {
+    isolation: isolate;
   }
 }
 

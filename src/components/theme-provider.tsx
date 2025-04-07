@@ -1,6 +1,9 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState, useCallback } from "react"
+
+const supportsViewTransitions = () =>
+  typeof document !== 'undefined' && 'startViewTransition' in document;
 
 type Theme = "dark" | "light" | "system"
 
@@ -50,39 +53,63 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
-    root.classList.remove("light", "dark")
-
-    if (theme === "system" && enableSystem) {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-      root.classList.add(systemTheme)
-    } else {
-      root.classList.add(theme)
+    const applyTheme = (newTheme: string) => {
+      root.classList.remove("light", "dark")
+      root.classList.add(newTheme)
     }
 
-    // Listen for system theme changes if needed
-    if (enableSystem) {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
-      const handleChange = () => {
-        if (theme === "system") {
-          root.classList.remove("light", "dark")
-          root.classList.add(mediaQuery.matches ? "dark" : "light")
-        }
+    const applyThemeWithTransition = (newTheme: string) => {
+      if (supportsViewTransitions() && !disableTransitionOnChange) {
+        (document as any).startViewTransition(() => {
+          applyTheme(newTheme)
+        })
+      } else {
+        applyTheme(newTheme)
       }
+    }
 
-      mediaQuery.addEventListener("change", handleChange)
-      return () => mediaQuery.removeEventListener("change", handleChange)
+    let effectiveTheme: string
+    if (theme === "system" && enableSystem) {
+      effectiveTheme = mediaQuery.matches ? "dark" : "light"
+    } else {
+      effectiveTheme = theme
+    }
+
+    applyThemeWithTransition(effectiveTheme)
+
+    const handleSystemChange = () => {
+      if (theme === "system") {
+        const newSystemTheme = mediaQuery.matches ? "dark" : "light"
+        applyThemeWithTransition(newSystemTheme)
+      }
+    }
+
+    if (enableSystem) {
+      mediaQuery.addEventListener("change", handleSystemChange)
+      return () => mediaQuery.removeEventListener("change", handleSystemChange)
     }
   }, [theme, enableSystem, disableTransitionOnChange])
 
+  const updateTheme = useCallback((newTheme: Theme) => {
+    localStorage.setItem(storageKey, newTheme)
+    setTheme(newTheme)
+  }, [storageKey])
+
+  const handleSetTheme = useCallback((newTheme: Theme) => {
+    if (supportsViewTransitions() && !disableTransitionOnChange) {
+      (document as any).startViewTransition(() => {
+        updateTheme(newTheme)
+      })
+    } else {
+      updateTheme(newTheme)
+    }
+  }, [disableTransitionOnChange, updateTheme])
+
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setTheme(theme)
-    },
+    setTheme: handleSetTheme,
   }
 
   return (
