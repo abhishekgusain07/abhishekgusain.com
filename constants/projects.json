@@ -7,26 +7,8 @@
     },
     {
       "id": 2,
-      "title": "ArkAid",
-      "description": "A game performance analytics platform",
-      "link": "https://github.com/lakshaybhushan/Arkaid-IIA"
-    },
-    {
-      "id": 3,
-      "title": "What the Hack?!",
-      "description": "A HackerNews comments summarizer",
-      "link": "https://wth.lakshb.dev/"
-    },
-    {
-      "id": 4,
-      "title": "KalaKunj",
-      "description": "Traditional Indian art showcase in AR",
-      "link": "https://github.com/lakshaybhushan/kalakunj"
-    },
-    {
-      "id": 5,
-      "title": "voyageVR",
-      "description": "End traveller focused VR tourism",
-      "link": "https://github.com/lakshaybhushan/voyageVR"
+      "title": "TweetDigest",
+      "description": "Get Your Favourite X creators tweets summarized by AI in one place,",
+      "link": "https://github.com/abhishekgusain07/tweet-summaries"
     }
   ]

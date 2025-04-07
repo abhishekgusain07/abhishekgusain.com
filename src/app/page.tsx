@@ -32,7 +32,7 @@ const Icon = ({ src, alt }: { src: string; alt: string }) => (
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-screen-md px-4 py-32 flex flex-col gap-8">
+    <main className="mx-auto max-w-screen-md px-4 py-28 flex flex-col gap-8">
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
@@ -86,22 +86,7 @@ export default function Home() {
             ))
           }
         </div>
-        <div className="group">
-          <p
-            className="mt-4 w-fit rounded-md border border-body/20 bg-hoverColor/60 px-2 py-1 text-xs text-body transition-all duration-300 ease-in-out">
-            <PiLightbulbFill
-              className="-mt-0.5 inline-block transition-all duration-300 ease-in-out md:group-hover:text-primary"
-            />
-            Feel free to explore my
-            <a
-              href="https://github.com/abhishekgusain07?tab=repositories"
-              rel="noopenner noreferrer"
-              target="_blank"
-              className="font-medium text-body underline underline-offset-2 transition-all duration-150 ease-in-out md:hover:text-primary md:group-hover:text-primary"
-              >GitHub</a
-            > for more projects. Most of them are open-source.
-          </p>
-        </div>
+        
       </section>
 
        
