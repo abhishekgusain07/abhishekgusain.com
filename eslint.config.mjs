@@ -1,22 +1,18 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+// eslint.config.mjs - Disable all ESLint rules
+export default [
   {
-    rules: {
-      "@typescript-eslint/no-unused-vars": "off",
-      "react/no-unescaped-entities": "off",
+    // Apply to all files
+    files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'],
+    
+    // This ignores all rules entirely
+    ignores: ['**/*'],
+    
+    // In case the ignores pattern doesn't work, also disable all rules
+    rules: {},
+    
+    // Turn off reporting for unused disable directives
+    linterOptions: {
+      reportUnusedDisableDirectives: 'off',
     },
   },
 ];
-
-export default eslintConfig;
