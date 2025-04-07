@@ -1,14 +1,14 @@
 [
     {
       "id": 1,
-      "title": "Next.js + Notion Waitlist Template",
-      "description": "A simple Next.js + Notion as CMS waitlist template",
-      "link": "https://vercel.com/templates/next.js/next-js-waitlist-with-notion-cms"
+      "title": "GlitchMates",
+      "description": "A collaborative platform for developers to connect and work on projects aligned with their interests and expertise.",
+      "link": "https://github.com/abhishekgusain07/glitchmates"
     },
     {
       "id": 2,
       "title": "TweetDigest",
-      "description": "Get Your Favourite X creators tweets summarized by AI in one place,",
+      "description": "An AI-powered tool that aggregates and summarizes content from your favorite X (Twitter) creators in one centralized dashboard.",
       "link": "https://github.com/abhishekgusain07/tweet-summaries"
     }
   ]
