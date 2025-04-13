@@ -10,5 +10,11 @@
       "title": "TweetDigest",
       "description": "An AI-powered tool that aggregates and summarizes content from your favorite X (Twitter) creators in one centralized dashboard.",
       "link": "https://github.com/abhishekgusain07/tweet-summaries"
+    },
+    {
+      "id": 3,
+      "title": "GreenLeaf",
+      "description": "A modern Next.js 14 waitlist template with Neon PostgreSQL, Drizzle ORM, Upstash Redis, and Resend for beautiful transactional emails.",
+      "link": "https://github.com/abhishekgusain07/GreenLeaf-waitlist-template"
     }
   ]
