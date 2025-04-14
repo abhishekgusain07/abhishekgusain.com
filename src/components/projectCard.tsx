@@ -12,26 +12,38 @@ interface Project {
 
 interface ProjectCardProps {
 	project: Project;
-	id ?: number
+	id?: number;
+	isBlurred?: boolean;
+	onMouseEnter?: () => void;
+	onMouseLeave?: () => void;
 }
 
-const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: FC<ProjectCardProps> = ({ 
+	project, 
+	isBlurred = false, 
+	onMouseEnter, 
+	onMouseLeave 
+}) => {
 	return (
-		<div className="flex flex-col items-start pt-2">
-			
+		<div 
+			className="flex flex-col items-start pt-2"
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+		>
 			<a
 				href={project.link}
 				target="_blank"
 				rel="noreferrer"
-				className="group relative -mx-3 w-full transform rounded-lg px-3 py-2 transition-all duration-300 ease-in-out md:hover:scale-105 md:hover:bg-orangeBg">
-				<div className="flex items-center justify-between text-sm font-medium tracking-tight text-title md:group-hover:text-primary rounded-xl"  >
-				<GlowingEffect
-					spread={40}
-					glow={true}
-					disabled={false}
-					proximity={64}
-					inactiveZone={0.01}
-				/>
+				className={`group relative -mx-3 w-full transform rounded-lg px-3 py-2 transition-all duration-300 ease-in-out md:hover:scale-105 md:hover:bg-orangeBg ${isBlurred ? 'opacity-40 blur-[1px] pointer-events-none' : ''}`}
+			>
+				<div className="flex items-center justify-between text-sm font-medium tracking-tight text-title md:group-hover:text-primary rounded-xl">
+					<GlowingEffect
+						spread={40}
+						glow={true}
+						disabled={false}
+						proximity={64}
+						inactiveZone={0.01}
+					/>
 					<div className="flex items-center">
 						<h3 className="font-extrabold mb-1">{project.title}</h3>
 						{project.tag && (
