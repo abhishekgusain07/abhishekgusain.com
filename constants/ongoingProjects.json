@@ -1,20 +1,26 @@
 [
     {
       "id": 1,
-      "title": "GlitchMates",
-      "description": "A collaborative platform for developers to connect and work on projects aligned with their interests and expertise.",
-      "link": "https://github.com/abhishekgusain07/glitchmates"
+      "title": "PrintMoney",
+      "description": "A comprehensive SaaS template designed to accelerate MVP development. Built with Next.js, featuring PostgreSQL (Neon), Drizzle ORM, Better-Auth for authentication, PostHog for analytics, Sentry for error tracking, and Stripe for payment processing.",
+      "link": "https://github.com/abhishekgusain07/nextjs-betterauth-postgresql-drizzle-stripe"
     },
     {
       "id": 2,
-      "title": "TweetDigest",
-      "description": "An AI-powered tool that aggregates and summarizes content from your favorite X (Twitter) creators in one centralized dashboard.",
-      "link": "https://github.com/abhishekgusain07/tweet-summaries"
+      "title": "OneStopMarketing",
+      "description": "An AI-powered UGC ad creation platform that enables users to generate and edit videos directly in the browser. Features include AI avatar creation, in-browser video editing with Remotion, and automated social media scheduling across multiple platforms.",
+      "link": "https://github.com/abhishekgusain07/one-stop-marketing"
     },
     {
       "id": 3,
-      "title": "GreenLeaf",
-      "description": "A modern Next.js 14 waitlist template with Neon PostgreSQL, Drizzle ORM, Upstash Redis, and Resend for beautiful transactional emails.",
-      "link": "https://github.com/abhishekgusain07/GreenLeaf-waitlist-template"
+      "title": "Downtominutes",
+      "description": "A sophisticated goal-tracking application that helps users break down ambitious objectives into manageable steps. Features systematic planning tools and progress tracking to ensure consistent achievement of personal and professional goals.",
+      "link": "https://github.com/abhishekgusain07/DownToMinutes"
+    },
+    {
+      "id": 4,
+      "title": "InvoiceManager",
+      "description": "An intelligent invoice management system that streamlines payment tracking and client communication. Features include automated payment reminders, customizable email templates via Resend, and comprehensive invoice tracking with expected payment dates.",
+      "link": "https://github.com/abhishekgusain07/invoicemanager"
     }
   ]
