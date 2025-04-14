@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { RiArrowRightUpLine } from "react-icons/ri";
+import { GlowingEffect } from "./ui/glowing-effect";
 
 interface Project {
 	id: number;
@@ -17,14 +18,22 @@ interface ProjectCardProps {
 const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
 	return (
 		<div className="flex flex-col items-start pt-2">
+			
 			<a
 				href={project.link}
 				target="_blank"
 				rel="noreferrer"
 				className="group relative -mx-3 w-full transform rounded-lg px-3 py-2 transition-all duration-300 ease-in-out md:hover:scale-105 md:hover:bg-orangeBg">
-				<div className="flex items-center justify-between text-sm font-medium tracking-tight text-title md:group-hover:text-primary">
+				<div className="flex items-center justify-between text-sm font-medium tracking-tight text-title md:group-hover:text-primary rounded-xl"  >
+				<GlowingEffect
+					spread={40}
+					glow={true}
+					disabled={false}
+					proximity={64}
+					inactiveZone={0.01}
+				/>
 					<div className="flex items-center">
-						<h3 className="font-bold">{project.title}</h3>
+						<h3 className="font-extrabold mb-1">{project.title}</h3>
 						{project.tag && (
 							<div className="ml-2 rounded-full border border-emerald-700 bg-emerald-100 px-1.5 py-0.5 text-xs font-medium text-emerald-700">
 								<span>{project.tag}</span>
