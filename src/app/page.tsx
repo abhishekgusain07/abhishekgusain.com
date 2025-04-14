@@ -7,6 +7,7 @@ import projectData from "../../constants/projects.json"
 import { PiLightbulbFill } from "react-icons/pi";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import ProjectCard from "@/components/projectCard";
+import ProjectsSection from "@/components/tabsOrigin"
 
 const projects = projectData;
 
@@ -45,12 +46,12 @@ export default function Home() {
         </div>
       </div>
         <div className="flex items-center gap-1.5 font-medium tracking-tight">
-        <h2 className="text-base text-title">designer</h2>
-        <div className="mt-1.5 h-1 w-1 rounded bg-title dark:bg-white bg-black"></div>
-        <h2 className="text-base text-title">developer</h2>
-        <div className="mt-1.5 h-1 w-1 rounded bg-title dark:bg-white bg-black"></div>
-        <h2 className="text-base text-title">researcher</h2>
-      </div>
+          <h2 className="text-base text-title">builder</h2>
+          <div className="mt-1.5 h-1 w-1 rounded bg-title dark:bg-white bg-black"></div>
+          <h2 className="text-base text-title">creator</h2>
+          <div className="mt-1.5 h-1 w-1 rounded bg-title dark:bg-white bg-black"></div>
+          <h2 className="text-base text-title">innovator</h2>
+        </div>
         <p className="pt-4 text-sm tracking-wide">
           Hi there, I'm <strong className="font-bold">Abhishek Gusain</strong>, a passionate builder and problem-solver. I thrive on 
           creating <span className="dark:text-white text-black font-bold">innovative solutions</span> that 
@@ -65,6 +66,7 @@ export default function Home() {
         {
           socials.map((social) => (
             <a
+              key={social.id}
               href={social.url}
               target={social.target}
               rel={social.target === "_blank" ? "noopener noreferrer" : undefined}
@@ -78,18 +80,9 @@ export default function Home() {
       </div>
 
       <section className="pt-8">
-        <h2 className="font-medium tracking-tight text-title">Projects</h2>
-        <div className="pt-1.5">
-          {
-            projects.map((project) => (
-              <ProjectCard project={project}/>
-            ))
-          }
-        </div>
-        
+        <h2 className="font-medium tracking-tight text-title mb-2">Projects</h2>
+        <ProjectsSection />
       </section>
-
-       
     </main>
   )
 }

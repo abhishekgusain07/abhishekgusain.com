@@ -11,6 +11,7 @@ interface Project {
 
 interface ProjectCardProps {
 	project: Project;
+	id ?: number
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
