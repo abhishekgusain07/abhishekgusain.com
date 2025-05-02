@@ -8,6 +8,7 @@ import { PiLightbulbFill } from "react-icons/pi";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import ProjectCard from "@/components/projectCard";
 import ProjectsSection from "@/components/tabsOrigin"
+import GitGraph from "./components/gitgraph"
 
 const projects = projectData;
 
@@ -82,6 +83,10 @@ export default function Home() {
       <section className="pt-8">
         <h2 className="font-medium tracking-tight text-title mb-2">Projects</h2>
         <ProjectsSection />
+      </section>
+      <section className="pt-8">
+        <h2 className="font-medium tracking-tight text-title mb-2">Github Contributions</h2>
+        <GitGraph />
       </section>
     </main>
   )

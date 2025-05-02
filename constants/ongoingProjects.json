@@ -18,9 +18,9 @@
       "link": "https://github.com/abhishekgusain07/DownToMinutes"
     },
     {
-      "id": 4,
-      "title": "InvoiceManager",
+        "id": 4,
+        "title": "InvoiceManager",
       "description": "An intelligent invoice management system that streamlines payment tracking and client communication. Features include automated payment reminders, customizable email templates via Resend, and comprehensive invoice tracking with expected payment dates.",
-      "link": "https://github.com/abhishekgusain07/invoicemanager"
-    }
+        "link": "https://github.com/abhishekgusain07/invoicemanager"
+      }
   ]

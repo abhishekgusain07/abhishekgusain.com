@@ -37,13 +37,13 @@ const ProjectCard: FC<ProjectCardProps> = ({
 				className={`group relative -mx-3 w-full transform rounded-lg px-3 py-2 transition-all duration-300 ease-in-out md:hover:scale-105 md:hover:bg-orangeBg ${isBlurred ? 'opacity-40 blur-[1px] pointer-events-none' : ''}`}
 			>
 				<div className="flex items-center justify-between text-sm font-medium tracking-tight text-title md:group-hover:text-primary rounded-xl">
-					<GlowingEffect
-						spread={40}
-						glow={true}
-						disabled={false}
-						proximity={64}
-						inactiveZone={0.01}
-					/>
+				<GlowingEffect
+					spread={40}
+					glow={true}
+					disabled={false}
+					proximity={64}
+					inactiveZone={0.01}
+				/>
 					<div className="flex items-center">
 						<h3 className="font-extrabold mb-1">{project.title}</h3>
 						{project.tag && (
