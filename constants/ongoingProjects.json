@@ -1,5 +1,11 @@
 [
   {
+    "id": 0,
+    "title": "Calassist: AI-powered Calendar Assistant",
+    "description": "Connect your gmail calendar talk to it like a personal assistant",
+    "link": "https://github.com/abhishekgusain07/calassist"
+  },
+  {
     "id": 1,
     "title": "Postahead",
     "description": "A social media scheduling platform that allows users to schedule posts to their social media accounts, including X, Instagram, YouTube, TikTok, and LinkedIn.",
