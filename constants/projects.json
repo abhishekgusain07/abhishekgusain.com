@@ -16,5 +16,11 @@
       "title": "GreenLeaf",
       "description": "A modern Next.js 14 waitlist template with Neon PostgreSQL, Drizzle ORM, Upstash Redis, and Resend for beautiful transactional emails.",
       "link": "https://github.com/abhishekgusain07/GreenLeaf-waitlist-template"
-    }
+    },
+    {
+      "id": 4,
+      "title": "PrintMoney",
+      "description": "A comprehensive SaaS template designed to accelerate MVP development. Built with Next.js, featuring PostgreSQL (Neon), Drizzle ORM, Better-Auth for authentication, PostHog for analytics, Sentry for error tracking, and Stripe for payment processing.",
+        "link": "https://github.com/abhishekgusain07/nextjs-betterauth-postgresql-drizzle-stripe"
+      }
   ]

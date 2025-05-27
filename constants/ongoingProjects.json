@@ -5,34 +5,36 @@
     "description": "A social media scheduling platform that allows users to schedule posts to their social media accounts, including X, Instagram, YouTube, TikTok, and LinkedIn.",
     "link": "https://github.com/abhishekgusain07/postit.app"
   },
-  {
-    "id": 2,
-    "title": "PrintMoney",
-    "description": "A comprehensive SaaS template designed to accelerate MVP development. Built with Next.js, featuring PostgreSQL (Neon), Drizzle ORM, Better-Auth for authentication, PostHog for analytics, Sentry for error tracking, and Stripe for payment processing.",
-      "link": "https://github.com/abhishekgusain07/nextjs-betterauth-postgresql-drizzle-stripe"
-    },
     {
-      "id": 3,
+      "id": 2,
       "title": "OneStopMarketing",
       "description": "An AI-powered UGC ad creation platform that enables users to generate and edit videos directly in the browser. Features include AI avatar creation, in-browser video editing with Remotion, and automated social media scheduling across multiple platforms.",
       "link": "https://github.com/abhishekgusain07/cloudfare-onestop"
     },
     {
-      "id": 4,
+      "id": 3,
       "title": "Downtominutes",
       "description": "A sophisticated goal-tracking application that helps users break down ambitious objectives into manageable steps. Features systematic planning tools and progress tracking to ensure consistent achievement of personal and professional goals.",
       "link": "https://github.com/abhishekgusain07/DownToMinutes"
     },
     {
-        "id": 5,
+        "id": 4,
         "title": "InvoiceManager",
       "description": "An intelligent invoice management system that streamlines payment tracking and client communication. Features include automated payment reminders, customizable email templates via Resend, and comprehensive invoice tracking with expected payment dates.",
         "link": "https://github.com/abhishekgusain07/invoicemanager"
     },
     {
-      "id": 6,
+      "id": 5,
       "title": "StudioAnimation app",
       "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
       "link": "https://github.com/abhishekgusain07/studioanimations.app"
+    },
+    {
+      "id": 6,
+      "title": "FastApi Template ",
+      "description": "A template for building FastAPI applications with a focus on scalability, performance, and maintainability. Features include authentication, database integration, and automated testing.",
+      "link": "https://github.com/abhishekgusain07/prodready_fastapi"
     }
   ]
+
+  
