@@ -22,5 +22,11 @@
       "title": "PrintMoney",
       "description": "A comprehensive SaaS template designed to accelerate MVP development. Built with Next.js, featuring PostgreSQL (Neon), Drizzle ORM, Better-Auth for authentication, PostHog for analytics, Sentry for error tracking, and Stripe for payment processing.",
         "link": "https://github.com/abhishekgusain07/nextjs-betterauth-postgresql-drizzle-stripe"
+      },
+      {
+        "id": 5,
+        "title": "WorkQueue-Py",
+        "description": "A distributed background job processor built with FastAPI, Celery, and Redis — perfect for async task handling like emails, image processing, and more.",
+        "link": "https://github.com/abhishekgusain07/workqueue-py"
       }
   ]
