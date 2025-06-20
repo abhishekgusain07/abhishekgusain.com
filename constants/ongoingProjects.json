@@ -40,6 +40,18 @@
       "title": "FastApi Template ",
       "description": "A template for building FastAPI applications with a focus on scalability, performance, and maintainability. Features include authentication, database integration, and automated testing.",
       "link": "https://github.com/abhishekgusain07/prodready_fastapi"
+    },
+    {
+      "id": 7,
+      "title": "OceanSide",
+      "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
+      "link": "https://github.com/abhishekgusain07/ocean-side"
+    },
+    {
+      "id": 8,
+      "title": "Riverside",
+      "description": "A comprehensive social networking platform designed to connect communities through innovative digital interactions. Features include real-time messaging, event planning, and personalized social networking tools.",
+      "link": "https://github.com/abhishekgusain07/riverside"
     }
   ]
 
