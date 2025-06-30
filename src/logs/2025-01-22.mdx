@@ -1,0 +1,49 @@
+# Daily Log - Wednesday, January 22, 2025
+
+## What I worked on today
+
+- Implemented a better content loading system for the devlog
+- Added more sample log entries to test the listing functionality
+- Researched MDX integration options for Next.js App Router
+- Started working on proper file system integration
+
+## Deep dive: File system integration
+
+Today I explored how to properly read markdown files from the file system in Next.js. The key insight is using the `fs` module server-side:
+
+```typescript
+import fs from 'fs'
+import path from 'path'
+
+function getLogContent(date: string) {
+  const logsDirectory = path.join(process.cwd(), 'src/logs')
+  const filePath = path.join(logsDirectory, `${date}.mdx`)
+  
+  if (!fs.existsSync(filePath)) {
+    return null
+  }
+  
+  return fs.readFileSync(filePath, 'utf8')
+}
+```
+
+## UI improvements
+
+I'm really happy with how the design is shaping up. The hover effects on the log entries feel smooth and the color transitions work well with both light and dark themes.
+
+The inspiration design had a nice red accent color, but I think the neutral palette works better for my portfolio's aesthetic.
+
+## Learning moment
+
+One thing I realized today is the importance of having good sample content when building interfaces. It really helps to see how the design holds up with realistic content.
+
+## Performance considerations
+
+Since these are static markdown files, I could potentially pre-generate a lot of this at build time. Something to consider as the number of logs grows.
+
+## Tomorrow's goals
+
+- Integrate MDX properly with syntax highlighting
+- Add a way to automatically discover available log files
+- Create a better content management workflow
+- Maybe add tags or categories to logs 

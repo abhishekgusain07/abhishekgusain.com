@@ -78,6 +78,14 @@ export default function Home() {
             </a>
           ))
         }
+        <Link
+          href="/logs"
+          className="group flex items-center underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline"
+        >
+          <PiLightbulbFill className="" />
+          <span className="text-sm">devlog</span>
+          <RiArrowRightUpLine className="opacity-0 transition-opacity duration-150 md:group-hover:opacity-100" />
+        </Link>
       </div>
 
       <section className="pt-8">
