@@ -17,8 +17,8 @@ npm run new-log 2025-01-26
 ### Method 2: Manual Creation
 
 1. Create file: `src/logs/2025-01-25.mdx`
-2. Update mock data in two files (details below)
-3. Write your content using the template
+2. Write your content using the template
+3. Save the file - it will appear automatically!
 
 ## 📋 Template Structure
 
@@ -53,21 +53,14 @@ const example = "meaningful code snippet";
 Personal thoughts about progress and growth
 ```
 
-## 🔧 Current Setup (Manual Updates Required)
+## ✨ Automatic File Discovery
 
-After creating a log file, update these two files:
+**No more manual data updates!** The system now automatically:
 
-### 1. `src/app/logs/page.tsx`
-Add to the `mockLogs` array:
-```javascript
-{ date: "2025-01-25", dayOfWeek: "Saturday", entries: 1 }
-```
-
-### 2. `src/app/logs/[date]/page.tsx`  
-Add to the `mockDates` array:
-```javascript
-'2025-01-25'
-```
+- 🔍 **Scans** the `src/logs/` directory for MDX files
+- 📅 **Detects** all log entries by filename (YYYY-MM-DD.mdx)
+- 🔄 **Updates** the logs list in real-time
+- 🎯 **Displays** them on the `/logs` page automatically
 
 ## 🎯 Complete Example Workflow
 
@@ -80,18 +73,25 @@ Let's say you want to add today's entry:
 
 2. **Fill in your content** in the created MDX file
 
-3. **Update mock data** as shown above
+3. **Save the file** - that's it! 
 
-4. **Test it works** by visiting `/logs` in your browser
+4. **Visit `/logs`** to see your entry appear automatically
 
 ## 📁 File Structure
 
 ```
 ├── src/
-│   ├── app/logs/
-│   │   ├── page.tsx              # Main listing page
-│   │   └── [date]/page.tsx       # Individual entries
-│   └── logs/                     # Your MDX files
+│   ├── app/
+│   │   ├── api/logs/
+│   │   │   └── route.ts          # API endpoint for log discovery
+│   │   └── logs/
+│   │       ├── layout.tsx        # Logs section metadata
+│   │       ├── page.tsx          # Main listing page (no mock data!)
+│   │       └── [date]/
+│   │           └── page.tsx      # Individual log pages
+│   ├── lib/
+│   │   └── logs.ts               # File discovery utilities
+│   └── logs/                     # Your MDX files (auto-discovered!)
 │       ├── 2025-01-20.mdx
 │       ├── 2025-01-21.mdx
 │       └── 2025-01-25.mdx
@@ -99,29 +99,67 @@ Let's say you want to add today's entry:
     └── new-log.js                # Helper script
 ```
 
+## 🔧 How It Works
+
+### Automatic Discovery Process:
+
+1. **File Scanning**: Server-side utilities scan `src/logs/` directory
+2. **Validation**: Only files matching `YYYY-MM-DD.mdx` pattern are included
+3. **API Endpoint**: `/api/logs` serves the discovered log data
+4. **Client Fetch**: Frontend fetches and displays the logs
+5. **Real-time Updates**: New files appear automatically on page refresh
+
+### Technical Implementation:
+
+```typescript
+// src/lib/logs.ts - Automatic file discovery
+export function getAvailableLogs(): LogEntry[] {
+  const logsDirectory = path.join(process.cwd(), 'src', 'logs')
+  const files = fs.readdirSync(logsDirectory)
+  
+  return files
+    .filter(file => file.endsWith('.mdx'))
+    .filter(file => /^\d{4}-\d{2}-\d{2}\.mdx$/.test(file))
+    .map(file => ({ 
+      date: file.replace('.mdx', ''),
+      // ... other properties
+    }))
+}
+```
+
 ## 💡 Pro Tips
 
 1. **Daily Habit**: Set a reminder to log at the end of each coding day
-2. **Code Snippets**: Include interesting code you wrote or learned
-3. **Problem Solving**: Document challenges - future you will thank you
-4. **Honest Reflection**: Include both wins and struggles
-5. **Forward Planning**: Use tomorrow's plan section actively
+2. **Consistent Naming**: Always use YYYY-MM-DD format for file names
+3. **Code Snippets**: Include interesting code you wrote or learned
+4. **Problem Solving**: Document challenges - future you will thank you
+5. **Honest Reflection**: Include both wins and struggles
+6. **Forward Planning**: Use tomorrow's plan section actively
 
-## 🔮 Future Improvements
+## 🎯 Benefits of Automatic Discovery
 
-The system is currently using mock data for simplicity. Planned enhancements:
-
-- [ ] Automatic file discovery (eliminate manual mock data updates)  
-- [ ] Full MDX processing with syntax highlighting
-- [ ] Search functionality across all entries
-- [ ] Tags and categorization
-- [ ] RSS feed for subscribers
+- ✅ **No Manual Updates**: Just create files, system handles the rest
+- ✅ **Error-Free**: No more forgetting to update mock data arrays
+- ✅ **Scalable**: Handles any number of log entries automatically
+- ✅ **Real-time**: New logs appear immediately after creation
+- ✅ **Maintainable**: Clean separation between content and logic
 
 ## 🚨 Important Notes
 
-- **Date Format**: Always use YYYY-MM-DD format
+- **Date Format**: Always use YYYY-MM-DD format for file names
 - **File Location**: All log files go in `src/logs/` directory  
-- **Mock Data**: Remember to update both mock arrays after creating new entries
-- **Consistent Structure**: Following the template helps maintain readability
+- **File Extension**: Use `.mdx` extension for all log files
+- **Content Structure**: Following the template helps maintain readability
 
-This devlog system helps you track progress, remember solutions, and share your engineering journey! 🎯 
+## 🔮 Future Enhancements
+
+Now that automatic discovery is implemented, potential next steps:
+
+- [ ] Full MDX processing with React components
+- [ ] Syntax highlighting for code blocks  
+- [ ] Search functionality across all entries
+- [ ] Tags and categorization system
+- [ ] RSS feed generation
+- [ ] Previous/Next navigation between entries
+
+This devlog system now provides a seamless experience - just write your logs and they appear automatically! 🎯 

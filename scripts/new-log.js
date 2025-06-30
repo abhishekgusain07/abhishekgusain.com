@@ -44,7 +44,9 @@ const logFile = path.join(logsDir, `${dateStr}.mdx`);
 // Check if log already exists
 if (fs.existsSync(logFile)) {
   console.log(`📝 Log for ${dateStr} already exists!`);
-  console.log(`📂 Opening: ${logFile}`);
+  console.log(`📂 File: ${logFile}`);
+  console.log('');
+  console.log('💡 TIP: Open the file to continue editing your daily log!');
   process.exit(0);
 }
 
@@ -91,12 +93,15 @@ try {
   console.log(`📅 Date: ${longDate}`);
   console.log(`📂 File: ${logFile}`);
   console.log('');
-  console.log('🚨 IMPORTANT: After writing your log, remember to:');
-  console.log(`   1. Add this entry to mockLogs in src/app/logs/page.tsx:`);
-  console.log(`      { date: "${dateStr}", dayOfWeek: "${dayName}", entries: 1 }`);
-  console.log(`   2. Add "${dateStr}" to mockDates in src/app/logs/[date]/page.tsx`);
+  console.log('🎯 Your log is automatically available at:');
+  console.log(`   http://localhost:3000/logs/${dateStr}`);
   console.log('');
-  console.log('💡 TIP: Open the file and start writing your daily log!');
+  console.log('📝 What to do next:');
+  console.log('   1. Open the file and write your daily log');
+  console.log('   2. Save the file');
+  console.log('   3. Visit /logs to see it appear automatically!');
+  console.log('');
+  console.log('✨ No manual data updates needed - the system detects your log files automatically!');
   
 } catch (error) {
   console.error('❌ Error creating log file:', error.message);

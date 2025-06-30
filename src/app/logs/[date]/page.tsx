@@ -2,7 +2,8 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Calendar, ArrowLeft } from "lucide-react"
+import { Calendar, ArrowLeft, Share2, Clock } from "lucide-react"
+import { logExists, getLogContent } from "@/lib/logs"
 
 interface LogPageProps {
   params: {
@@ -45,8 +46,16 @@ function formatDate(dateString: string): string {
   return date.toLocaleDateString('en-US', { 
     year: 'numeric', 
     month: 'long', 
+    day: 'numeric'
+  })
+}
+
+function formatDateShort(dateString: string): string {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('en-US', { 
+    month: 'long', 
     day: 'numeric',
-    weekday: 'long'
+    year: 'numeric'
   })
 }
 
@@ -55,57 +64,46 @@ function getDayOfWeek(dateString: string): string {
   return date.toLocaleDateString('en-US', { weekday: 'long' })
 }
 
-// Mock function to check if log exists - this will be replaced with actual file reading logic
-function logExists(date: string): boolean {
-  // For now, return true for dates in January 2025
-  const mockDates = ['2025-01-15', '2025-01-16', '2025-01-17', '2025-01-18', '2025-01-19', '2025-01-20', '2025-01-21', '2025-01-22', '2025-01-23', '2025-01-24', '2025-01-25']
-  return mockDates.includes(date)
-}
-
-// Mock function to get log content - this will be replaced with MDX reading logic
-function getLogContent(date: string): string {
-  return `# Daily Log - ${formatDate(date)}
-
-## What I worked on today
-
-- Implemented the devlog feature for my portfolio
-- Set up dynamic routing for individual log entries
-- Created a beautiful listing page inspired by modern devlog designs
-- Learned more about Next.js App Router and dynamic metadata generation
-
-## Challenges faced
-
-- Understanding how to properly structure the dynamic routes
-- Adapting the design inspiration to match my existing portfolio theme
-- Setting up the proper TypeScript types for the dynamic parameters
-
-## What I learned
-
-Today was a productive day working on the devlog feature. The dynamic routing in Next.js App Router is quite elegant once you understand the folder structure conventions.
-
-## Tomorrow's plan
-
-- Implement MDX support for rich markdown rendering
-- Add syntax highlighting for code blocks
-- Create a few more sample log entries
-- Add navigation between different log entries
-
-## Code snippet of the day
-
-\`\`\`typescript
-// Dynamic metadata generation in Next.js App Router
-export async function generateMetadata({ params }: LogPageProps): Promise<Metadata> {
-  const { date } = params
-  const formattedDate = formatDate(date)
+// Parse markdown content into sections
+function parseLogContent(content: string) {
+  const lines = content.split('\n')
+  const sections: Array<{ title: string; content: string; items?: string[] }> = []
+  let currentSection: { title: string; content: string; items?: string[] } | null = null
   
-  return {
-    title: \`Devlog - \${formattedDate} - Abhishek Gusain\`,
-    description: \`Daily development log for \${formattedDate}\`,
+  for (const line of lines) {
+    // Skip the main title
+    if (line.startsWith('# Daily Log')) continue
+    
+    // Handle section headers
+    if (line.startsWith('## ')) {
+      if (currentSection) {
+        sections.push(currentSection)
+      }
+      currentSection = {
+        title: line.replace('## ', '').trim(),
+        content: '',
+        items: []
+      }
+    }
+    // Handle list items
+    else if (line.startsWith('- ') && currentSection) {
+      const item = line.replace('- ', '').trim()
+      if (item) {
+        currentSection.items?.push(item)
+      }
+    }
+    // Handle regular content
+    else if (line.trim() && currentSection) {
+      currentSection.content += line + '\n'
+    }
   }
-}
-\`\`\`
-
-This pattern allows for SEO-friendly dynamic pages with proper meta tags.`
+  
+  // Add the last section
+  if (currentSection) {
+    sections.push(currentSection)
+  }
+  
+  return sections
 }
 
 export default function LogPage({ params }: LogPageProps) {
@@ -116,74 +114,124 @@ export default function LogPage({ params }: LogPageProps) {
     notFound()
   }
 
-  // Check if log exists
+  // Check if log exists using our utility function
   if (!logExists(date)) {
     notFound()
   }
 
-  const formattedDate = formatDate(date)
-  const dayOfWeek = getDayOfWeek(date)
+  // Get the actual content from the MDX file
   const content = getLogContent(date)
+  
+  if (!content) {
+    notFound()
+  }
+
+  const formattedDate = formatDate(date)
+  const formattedDateShort = formatDateShort(date)
+  const dayOfWeek = getDayOfWeek(date)
+  const sections = parseLogContent(content)
 
   return (
-    <main className="mx-auto max-w-screen-md px-4 py-28 flex flex-col gap-8">
+    <div className="min-h-screen bg-white dark:bg-black">
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
 
-      {/* Header */}
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-2">
-          <Link 
-            href="/logs" 
-            className="text-neutral-6 dark:text-neutral-dark-6 hover:text-neutral-8 dark:hover:text-neutral-dark-8 transition-colors text-sm flex items-center gap-1"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Logs
-          </Link>
-        </div>
-        
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 text-primary">
-            <Calendar className="w-5 h-5" />
-            <span className="text-sm font-medium">{date}</span>
+      <div className="mx-auto max-w-4xl p-4">
+        <div className="px-4 sm:px-6 md:px-8 py-4 w-full">
+          
+          {/* Hero Section */}
+          <div className="mb-8">
+            <div className="relative w-full h-48 bg-gradient-to-r from-neutral-2 to-neutral-3 dark:from-neutral-dark-2 dark:to-neutral-dark-3 rounded-lg overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white font-bold text-xl">
+                    AG
+                  </div>
+                  <div>
+                    <h2 className="font-bold text-neutral-8 dark:text-neutral-dark-8 text-2xl">Abhishek Gusain</h2>
+                    <p className="text-neutral-6 dark:text-neutral-dark-6 text-sm">engineer • builder • creator</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          
-          <h1 className="text-4xl font-semibold text-neutral-8 dark:text-neutral-dark-8 tracking-tighter">
-            {formattedDate}
-          </h1>
-          
-          <p className="text-neutral-6 dark:text-neutral-dark-6 text-sm">
-            {dayOfWeek}
-          </p>
+
+          {/* Navigation and Actions */}
+          <div className="flex justify-between items-center mb-8">
+            <Link href="/logs">
+              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 hover:bg-neutral-2 dark:hover:bg-neutral-dark-2 text-neutral-6 dark:text-neutral-dark-6 hover:text-neutral-8 dark:hover:text-neutral-dark-8">
+                <ArrowLeft className="w-4 h-4" />
+                Back to Logs
+              </button>
+            </Link>
+            
+            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 hover:bg-neutral-2 dark:hover:bg-neutral-dark-2 text-neutral-6 dark:text-neutral-dark-6 hover:text-neutral-8 dark:hover:text-neutral-dark-8">
+              <Share2 className="w-4 h-4" />
+              Share
+            </button>
+          </div>
+
+          {/* Date Header */}
+          <div className="flex flex-col gap-4 mb-8">
+            <div className="flex items-center gap-3">
+              <Calendar className="w-6 h-6 text-primary" />
+              <div className="flex flex-col gap-1">
+                <h1 className="font-bold text-primary text-3xl">{formattedDateShort}</h1>
+                <p className="text-neutral-5 dark:text-neutral-dark-5">{dayOfWeek}</p>
+              </div>
+            </div>
+            <div className="bg-gradient-to-r from-primary via-primary/50 to-transparent h-px"></div>
+          </div>
+
+          {/* Content Sections */}
+          <div className="flex flex-col gap-6 px-6 border-l-2 border-primary/30 dark:border-primary/20">
+            {sections.map((section, index) => (
+              <div 
+                key={index}
+                className="animate-in duration-500 fade-in-50"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <h3 className="font-semibold text-neutral-8 dark:text-neutral-dark-8 text-lg mb-3">
+                  {section.title}
+                </h3>
+                
+                {/* List items */}
+                {section.items && section.items.length > 0 && (
+                  <ul className="flex flex-col gap-2 ml-4 mb-4">
+                    {section.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="relative text-neutral-7 dark:text-neutral-dark-7 leading-relaxed">
+                        <span className="absolute -left-4 text-primary">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                
+                {/* Regular content */}
+                {section.content.trim() && (
+                  <div className="text-neutral-7 dark:text-neutral-dark-7 leading-relaxed whitespace-pre-wrap">
+                    {section.content.trim()}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Footer */}
+          <div className="flex justify-between items-center pt-8 mt-8 border-t border-neutral-3 dark:border-neutral-dark-3">
+            <div className="flex items-center gap-2 text-neutral-5 dark:text-neutral-dark-5 text-sm">
+              <Clock className="w-4 h-4" />
+              <span>1 entry</span>
+            </div>
+            <div className="text-neutral-5 dark:text-neutral-dark-5 text-sm">
+              Last updated: {formattedDateShort}
+            </div>
+          </div>
+
         </div>
       </div>
-
-      {/* Content */}
-      <article className="prose prose-neutral dark:prose-invert max-w-none">
-        <div className="whitespace-pre-wrap text-neutral-7 dark:text-neutral-dark-7 leading-relaxed">
-          {content}
-        </div>
-      </article>
-
-      {/* Navigation */}
-      <div className="flex justify-between items-center pt-8 border-t border-neutral-3 dark:border-neutral-dark-3">
-        <Link 
-          href="/logs/2025-01-24" 
-          className="text-neutral-6 dark:text-neutral-dark-6 hover:text-primary transition-colors text-sm flex items-center gap-1"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Previous Day
-        </Link>
-        
-        <Link 
-          href="/logs/2025-01-26" 
-          className="text-neutral-6 dark:text-neutral-dark-6 hover:text-primary transition-colors text-sm flex items-center gap-1"
-        >
-          Next Day
-          <ArrowLeft className="w-4 h-4 rotate-180" />
-        </Link>
-      </div>
-    </main>
+    </div>
   )
 } 
