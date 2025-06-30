@@ -202,8 +202,6 @@ export default function LogsPage() {
             </PopoverContent>
           </Popover>
           
-          {(startDate || endDate) && (
-                      {(startDate || endDate) && (
             <Button 
               variant="outline"
               size="sm"
@@ -211,10 +209,8 @@ export default function LogsPage() {
               className="bg-neutral-2 dark:bg-neutral-dark-2 hover:bg-neutral-3 dark:hover:bg-neutral-dark-3 border-neutral-3 dark:border-neutral-dark-3 text-neutral-6 dark:text-neutral-dark-6 hover:text-primary"
             >
               <X className="w-4 h-4 mr-1" />
-              Clear
-            </Button>
-          )}
-          )}
+            Clear
+          </Button>
         </div>
         
         <div className="text-neutral-6 dark:text-neutral-dark-6 text-sm">

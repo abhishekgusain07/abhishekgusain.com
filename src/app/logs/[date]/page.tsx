@@ -6,14 +6,14 @@ import { Calendar, ArrowLeft, Share2, Clock } from "lucide-react"
 import { logExists, getLogContent } from "@/lib/logs"
 
 interface LogPageProps {
-  params: {
+  params: Promise<{
     date: string
-  }
+  }>
 }
 
 // Generate metadata dynamically based on the date
 export async function generateMetadata({ params }: LogPageProps): Promise<Metadata> {
-  const { date } = params
+  const { date } = await params
   
   // Validate date format
   if (!isValidDate(date)) {
@@ -106,8 +106,8 @@ function parseLogContent(content: string) {
   return sections
 }
 
-export default function LogPage({ params }: LogPageProps) {
-  const { date } = params
+export default async function LogPage({ params }: LogPageProps) {
+  const { date } = await params
 
   // Validate date format
   if (!isValidDate(date)) {
