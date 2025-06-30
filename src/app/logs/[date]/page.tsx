@@ -58,7 +58,7 @@ function getDayOfWeek(dateString: string): string {
 // Mock function to check if log exists - this will be replaced with actual file reading logic
 function logExists(date: string): boolean {
   // For now, return true for dates in January 2025
-  const mockDates = ['2025-01-20', '2025-01-21', '2025-01-22', '2025-01-23', '2025-01-24']
+  const mockDates = ['2025-01-15', '2025-01-16', '2025-01-17', '2025-01-18', '2025-01-19', '2025-01-20', '2025-01-21', '2025-01-22', '2025-01-23', '2025-01-24', '2025-01-25']
   return mockDates.includes(date)
 }
 
@@ -169,7 +169,7 @@ export default function LogPage({ params }: LogPageProps) {
       {/* Navigation */}
       <div className="flex justify-between items-center pt-8 border-t border-neutral-3 dark:border-neutral-dark-3">
         <Link 
-          href="/logs/2025-01-19" 
+          href="/logs/2025-01-24" 
           className="text-neutral-6 dark:text-neutral-dark-6 hover:text-primary transition-colors text-sm flex items-center gap-1"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -177,7 +177,7 @@ export default function LogPage({ params }: LogPageProps) {
         </Link>
         
         <Link 
-          href="/logs/2025-01-21" 
+          href="/logs/2025-01-26" 
           className="text-neutral-6 dark:text-neutral-dark-6 hover:text-primary transition-colors text-sm flex items-center gap-1"
         >
           Next Day

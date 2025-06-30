@@ -3,28 +3,27 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { useState, useMemo } from "react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon, ChevronRight, ExternalLink, X } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { ChevronRight, Calendar, ExternalLink, X } from "lucide-react"
-
-// This would normally be generated from metadata, but since we're client-side now, 
-// we'll export metadata separately
-const pageMetadata = {
-  title: "Daily Devlogs - Abhishek Gusain",
-  description: "Documenting my daily development journey — bugs, features, and everything in between.",
-}
 
 // Mock data for now - this will be replaced with actual log data later
 const mockLogs = [
-  { date: "2025-01-20", dayOfWeek: "Monday", entries: 2 },
-  { date: "2025-01-21", dayOfWeek: "Tuesday", entries: 3 },
-  { date: "2025-01-22", dayOfWeek: "Wednesday", entries: 1 },
-  { date: "2025-01-23", dayOfWeek: "Thursday", entries: 4 },
+  { date: "2025-01-25", dayOfWeek: "Saturday", entries: 1 },
   { date: "2025-01-24", dayOfWeek: "Friday", entries: 2 },
-  { date: "2025-01-15", dayOfWeek: "Wednesday", entries: 1 },
-  { date: "2025-01-16", dayOfWeek: "Thursday", entries: 2 },
-  { date: "2025-01-17", dayOfWeek: "Friday", entries: 3 },
-  { date: "2025-01-18", dayOfWeek: "Saturday", entries: 1 },
+  { date: "2025-01-23", dayOfWeek: "Thursday", entries: 4 },
+  { date: "2025-01-22", dayOfWeek: "Wednesday", entries: 1 },
+  { date: "2025-01-21", dayOfWeek: "Tuesday", entries: 3 },
+  { date: "2025-01-20", dayOfWeek: "Monday", entries: 2 },
   { date: "2025-01-19", dayOfWeek: "Sunday", entries: 2 },
+  { date: "2025-01-18", dayOfWeek: "Saturday", entries: 1 },
+  { date: "2025-01-17", dayOfWeek: "Friday", entries: 3 },
+  { date: "2025-01-16", dayOfWeek: "Thursday", entries: 2 },
+  { date: "2025-01-15", dayOfWeek: "Wednesday", entries: 1 },
 ]
 
 function formatDate(dateString: string) {
@@ -36,38 +35,25 @@ function formatDate(dateString: string) {
   })
 }
 
-function formatDateShort(dateString: string) {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', { 
-    month: 'short', 
-    day: 'numeric',
-    year: 'numeric'
-  })
-}
-
-function isDateInRange(date: string, startDate: string | null, endDate: string | null): boolean {
+function isDateInRange(date: string, startDate: Date | undefined, endDate: Date | undefined): boolean {
   if (!startDate && !endDate) return true
   
   const targetDate = new Date(date)
-  const start = startDate ? new Date(startDate) : null
-  const end = endDate ? new Date(endDate) : null
   
-  if (start && end) {
-    return targetDate >= start && targetDate <= end
-  } else if (start) {
-    return targetDate >= start
-  } else if (end) {
-    return targetDate <= end
+  if (startDate && endDate) {
+    return targetDate >= startDate && targetDate <= endDate
+  } else if (startDate) {
+    return targetDate >= startDate
+  } else if (endDate) {
+    return targetDate <= endDate
   }
   
   return true
 }
 
 export default function LogsPage() {
-  const [startDate, setStartDate] = useState<string | null>("2025-01-20")
-  const [endDate, setEndDate] = useState<string | null>("2025-01-24")
-  const [showStartPicker, setShowStartPicker] = useState(false)
-  const [showEndPicker, setShowEndPicker] = useState(false)
+  const [startDate, setStartDate] = useState<Date | undefined>(new Date("2025-01-20"))
+  const [endDate, setEndDate] = useState<Date | undefined>(new Date("2025-01-25"))
 
   // Filter logs based on date range
   const filteredLogs = useMemo(() => {
@@ -77,25 +63,9 @@ export default function LogsPage() {
   }, [startDate, endDate])
 
   const clearFilters = () => {
-    setStartDate(null)
-    setEndDate(null)
+    setStartDate(undefined)
+    setEndDate(undefined)
   }
-
-  const handleStartDateChange = (date: string) => {
-    setStartDate(date)
-    setShowStartPicker(false)
-  }
-
-  const handleEndDateChange = (date: string) => {
-    setEndDate(date)
-    setShowEndPicker(false)
-  }
-
-  // Generate some date options for the picker
-  const dateOptions = mockLogs
-    .map(log => log.date)
-    .sort()
-    .filter((date, index, arr) => arr.indexOf(date) === index)
 
   return (
     <main className="mx-auto max-w-screen-md px-4 py-28 flex flex-col gap-8">
@@ -127,7 +97,7 @@ export default function LogsPage() {
       {/* Date Filter Section */}
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-primary" />
+          <CalendarIcon className="w-4 h-4 text-primary" />
           <span className="font-medium text-neutral-7 dark:text-neutral-dark-7 text-sm">
             Filter by date range:
           </span>
@@ -135,95 +105,86 @@ export default function LogsPage() {
         
         <div className="flex flex-wrap items-center gap-3">
           {/* Start Date Picker */}
-          <div className="relative">
-            <button 
-              onClick={() => setShowStartPicker(!showStartPicker)}
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm transition-all h-9 px-4 py-2 justify-start text-left font-normal bg-neutral-2 dark:bg-neutral-dark-2 border border-neutral-3 dark:border-neutral-dark-3 text-neutral-7 dark:text-neutral-dark-7 hover:bg-neutral-3 dark:hover:bg-neutral-dark-3"
-            >
-              <Calendar className="mr-2 w-4 h-4 text-primary" />
-              {startDate ? formatDateShort(startDate) : "Start Date"}
-            </button>
-            
-            {showStartPicker && (
-              <div className="absolute top-full left-0 mt-1 bg-white dark:bg-neutral-dark-1 border border-neutral-3 dark:border-neutral-dark-3 rounded-md shadow-lg z-10 min-w-[200px]">
-                <div className="p-2 max-h-48 overflow-y-auto">
-                  {dateOptions.map(date => (
-                    <button
-                      key={date}
-                      onClick={() => handleStartDateChange(date)}
-                      className={`w-full text-left px-3 py-2 text-sm rounded hover:bg-neutral-2 dark:hover:bg-neutral-dark-2 transition-colors ${
-                        startDate === date ? 'bg-neutral-3 dark:bg-neutral-dark-3' : ''
-                      }`}
-                    >
-                      {formatDateShort(date)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "w-[240px] justify-start text-left font-normal",
+                  "bg-neutral-2 dark:bg-neutral-dark-2 border-neutral-3 dark:border-neutral-dark-3",
+                  "text-neutral-7 dark:text-neutral-dark-7 hover:bg-neutral-3 dark:hover:bg-neutral-dark-3",
+                  !startDate && "text-muted-foreground"
+                )}
+              >
+                <CalendarIcon className="mr-2 h-4 w-4 text-primary" />
+                {startDate ? format(startDate, "PPP") : <span>Start date</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0 bg-white dark:bg-neutral-dark-1 border-neutral-3 dark:border-neutral-dark-3" align="start">
+              <Calendar
+                mode="single"
+                selected={startDate}
+                onSelect={setStartDate}
+                disabled={(date) =>
+                  date > new Date() || date < new Date("1900-01-01")
+                }
+                initialFocus
+              />
+            </PopoverContent>
+          </Popover>
           
           <span className="text-neutral-6 dark:text-neutral-dark-6 text-sm">to</span>
           
           {/* End Date Picker */}
-          <div className="relative">
-            <button 
-              onClick={() => setShowEndPicker(!showEndPicker)}
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm transition-all h-9 px-4 py-2 justify-start text-left font-normal bg-neutral-2 dark:bg-neutral-dark-2 border border-neutral-3 dark:border-neutral-dark-3 text-neutral-7 dark:text-neutral-dark-7 hover:bg-neutral-3 dark:hover:bg-neutral-dark-3"
-            >
-              <Calendar className="mr-2 w-4 h-4 text-primary" />
-              {endDate ? formatDateShort(endDate) : "End Date"}
-            </button>
-            
-            {showEndPicker && (
-              <div className="absolute top-full left-0 mt-1 bg-white dark:bg-neutral-dark-1 border border-neutral-3 dark:border-neutral-dark-3 rounded-md shadow-lg z-10 min-w-[200px]">
-                <div className="p-2 max-h-48 overflow-y-auto">
-                  {dateOptions.map(date => (
-                    <button
-                      key={date}
-                      onClick={() => handleEndDateChange(date)}
-                      className={`w-full text-left px-3 py-2 text-sm rounded hover:bg-neutral-2 dark:hover:bg-neutral-dark-2 transition-colors ${
-                        endDate === date ? 'bg-neutral-3 dark:bg-neutral-dark-3' : ''
-                      }`}
-                    >
-                      {formatDateShort(date)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "w-[240px] justify-start text-left font-normal",
+                  "bg-neutral-2 dark:bg-neutral-dark-2 border-neutral-3 dark:border-neutral-dark-3",
+                  "text-neutral-7 dark:text-neutral-dark-7 hover:bg-neutral-3 dark:hover:bg-neutral-dark-3",
+                  !endDate && "text-muted-foreground"
+                )}
+              >
+                <CalendarIcon className="mr-2 h-4 w-4 text-primary" />
+                {endDate ? format(endDate, "PPP") : <span>End date</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0 bg-white dark:bg-neutral-dark-1 border-neutral-3 dark:border-neutral-dark-3" align="start">
+              <Calendar
+                mode="single"
+                selected={endDate}
+                onSelect={setEndDate}
+                disabled={(date) =>
+                  date > new Date() || date < new Date("1900-01-01")
+                }
+                initialFocus
+              />
+            </PopoverContent>
+          </Popover>
           
-          <button 
+          <Button 
+            variant="outline"
+            size="sm"
             onClick={clearFilters}
-            className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-8 rounded-md gap-1.5 px-3 bg-neutral-2 dark:bg-neutral-dark-2 hover:bg-neutral-3 dark:hover:bg-neutral-dark-3 border border-neutral-3 dark:border-neutral-dark-3 text-neutral-6 dark:text-neutral-dark-6 hover:text-primary"
+            className="bg-neutral-2 dark:bg-neutral-dark-2 hover:bg-neutral-3 dark:hover:bg-neutral-dark-3 border-neutral-3 dark:border-neutral-dark-3 text-neutral-6 dark:text-neutral-dark-6 hover:text-primary"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4 mr-1" />
             Clear
-          </button>
+          </Button>
         </div>
         
         <div className="text-neutral-6 dark:text-neutral-dark-6 text-sm">
           {startDate || endDate ? (
-            `Showing logs ${startDate ? `from ${formatDateShort(startDate)}` : ''} ${
+            `Showing logs ${startDate ? `from ${format(startDate, "MMM d, yyyy")}` : ''} ${
               startDate && endDate ? 'to' : ''
-            } ${endDate ? `${!startDate ? 'until' : ''} ${formatDateShort(endDate)}` : ''}`
+            } ${endDate ? `${!startDate ? 'until' : ''} ${format(endDate, "MMM d, yyyy")}` : ''}`
           ) : (
             `Showing all ${mockLogs.length} logs`
           )}
         </div>
       </div>
-
-      {/* Close dropdowns when clicking outside */}
-      {(showStartPicker || showEndPicker) && (
-        <div 
-          className="fixed inset-0 z-0" 
-          onClick={() => {
-            setShowStartPicker(false)
-            setShowEndPicker(false)
-          }}
-        />
-      )}
 
       {/* Logs List */}
       <div className="flex flex-col gap-6">
@@ -267,7 +228,7 @@ export default function LogsPage() {
       {/* Empty State (when no logs match filter) */}
       {filteredLogs.length === 0 && (
         <div className="flex flex-col items-center gap-4 py-12">
-          <Calendar className="w-12 h-12 text-neutral-4 dark:text-neutral-dark-4" />
+          <CalendarIcon className="w-12 h-12 text-neutral-4 dark:text-neutral-dark-4" />
           <div className="text-center">
             <h3 className="font-medium text-neutral-7 dark:text-neutral-dark-7 mb-1">
               No logs found
