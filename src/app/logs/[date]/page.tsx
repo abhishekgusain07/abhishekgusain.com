@@ -2,7 +2,8 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Calendar, ArrowLeft, Share2, Clock } from "lucide-react"
+import { ShareButton } from "@/components/ShareButton"
+import { Calendar, ArrowLeft, Clock } from "lucide-react"
 import { logExists, getLogContent } from "@/lib/logs"
 
 interface LogPageProps {
@@ -167,10 +168,7 @@ export default async function LogPage({ params }: LogPageProps) {
               </button>
             </Link>
             
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 hover:bg-neutral-2 dark:hover:bg-neutral-dark-2 text-neutral-6 dark:text-neutral-dark-6 hover:text-neutral-8 dark:hover:text-neutral-dark-8">
-              <Share2 className="w-4 h-4" />
-              Share
-            </button>
+            <ShareButton date={date} />
           </div>
 
           {/* Date Header */}
