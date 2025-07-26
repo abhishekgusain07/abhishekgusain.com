@@ -22,21 +22,21 @@ export const socials = [
     {
       "id": 3,
       "name": "twitter",
-      "url": "https://x.com/agbuilds",
+      "url": "https://x.com/IamAbhiGusain",
       "target": "_blank",
       "icon": Twitter 
     },
     {
       "id": 4,
       "name": "github",
-      "url": "https://github.com/lakshaybhushan",
+      "url": "https://github.com/abhishekgusain07",
       "target": "_blank",
       "icon": Github
     },
     {
       "id": 5,
       "name": "email",
-      "url": "mailto:lakshay21397@iiitd.ac.in",
+      "url": "mailto:abhishek.gusain1007fb@gmail.com",
       "target": "_blank",
       "icon": Email
     }
