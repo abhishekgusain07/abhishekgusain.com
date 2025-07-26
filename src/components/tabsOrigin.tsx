@@ -10,21 +10,32 @@ import {
 import completedProjects from "../../constants/projects.json"
 import ongoingProjects from "../../constants/ongoingProjects.json"
 
-import ProjectCard from "./projectCard";
+import { StickyScroll } from "./ui/sticky-scroll-reveal";
+import ProjectContent from "./ProjectContent";
 
-const CompletedProjects = completedProjects;
-const OngoingProjects = ongoingProjects
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  techstack: string[];
+  github: string;
+  liveDemo: string;
+}
+
+const CompletedProjects = completedProjects as Project[];
+const OngoingProjects = ongoingProjects as Project[];
   
 export default function ProjectsSection() {
-  const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null);
+  // Transform projects data for StickyScroll component
+  const completedContent = CompletedProjects.map(project => ({
+    title: project.title,
+    content: <ProjectContent project={project} />
+  }));
 
-  const handleProjectMouseEnter = (id: number) => {
-    setHoveredProjectId(id);
-  };
-
-  const handleProjectMouseLeave = () => {
-    setHoveredProjectId(null);
-  };
+  const ongoingContent = OngoingProjects.map(project => ({
+    title: project.title,
+    content: <ProjectContent project={project} />
+  }));
 
   return (
     <Tabs defaultValue="tab-1" className="items-center">
@@ -33,36 +44,14 @@ export default function ProjectsSection() {
         <TabsTrigger value="tab-2">Ongoing</TabsTrigger>
       </TabsList>
       <TabsContent value="tab-1">
-      <div className="pt-1.5">
-        {
-          CompletedProjects.map((project) => (
-            <ProjectCard 
-              key={project.id}
-              project={project} 
-              id={project.id}
-              isBlurred={hoveredProjectId !== null && hoveredProjectId !== project.id}
-              onMouseEnter={() => handleProjectMouseEnter(project.id)}
-              onMouseLeave={handleProjectMouseLeave}
-            />
-          ))
-        }
-      </div>
+        <div className="pt-6">
+          <StickyScroll content={completedContent} />
+        </div>
       </TabsContent>
       <TabsContent value="tab-2">
-      <div className="pt-1.5">
-        {
-          OngoingProjects.map((project) => (
-            <ProjectCard 
-              key={project.id}
-              project={project} 
-              id={project.id}
-              isBlurred={hoveredProjectId !== null && hoveredProjectId !== project.id}
-              onMouseEnter={() => handleProjectMouseEnter(project.id)}
-              onMouseLeave={handleProjectMouseLeave}
-            />
-          ))
-        }
-      </div>
+        <div className="pt-6">
+          <StickyScroll content={ongoingContent} />
+        </div>
       </TabsContent>
     </Tabs>
   )

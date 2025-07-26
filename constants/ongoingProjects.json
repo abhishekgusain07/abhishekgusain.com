@@ -3,56 +3,74 @@
     "id": 0,
     "title": "Calassist: AI-powered Calendar Assistant",
     "description": "Connect your gmail calendar talk to it like a personal assistant",
-    "link": "https://github.com/abhishekgusain07/calassist"
+    "techstack": ["Next.js", "OpenAI API", "Google Calendar API", "Prisma", "TypeScript"],
+    "github": "https://github.com/abhishekgusain07/calassist",
+    "liveDemo": "https://calassist.vercel.app"
   },
   {
     "id": 1,
     "title": "Postahead",
     "description": "A social media scheduling platform that allows users to schedule posts to their social media accounts, including X, Instagram, YouTube, TikTok, and LinkedIn.",
-    "link": "https://github.com/abhishekgusain07/postit.app"
+    "techstack": ["React", "Node.js", "Express", "MongoDB", "Social Media APIs", "Bull Queue"],
+    "github": "https://github.com/abhishekgusain07/postit.app",
+    "liveDemo": "https://postahead.vercel.app"
   },
-    {
-      "id": 2,
-      "title": "OneStopMarketing",
-      "description": "An AI-powered UGC ad creation platform that enables users to generate and edit videos directly in the browser. Features include AI avatar creation, in-browser video editing with Remotion, and automated social media scheduling across multiple platforms.",
-      "link": "https://github.com/abhishekgusain07/cloudfare-onestop"
-    },
-    {
-      "id": 3,
-      "title": "Downtominutes",
-      "description": "A sophisticated goal-tracking application that helps users break down ambitious objectives into manageable steps. Features systematic planning tools and progress tracking to ensure consistent achievement of personal and professional goals.",
-      "link": "https://github.com/abhishekgusain07/DownToMinutes"
-    },
-    {
-        "id": 4,
-        "title": "InvoiceManager",
-      "description": "An intelligent invoice management system that streamlines payment tracking and client communication. Features include automated payment reminders, customizable email templates via Resend, and comprehensive invoice tracking with expected payment dates.",
-        "link": "https://github.com/abhishekgusain07/invoicemanager"
-    },
-    {
-      "id": 5,
-      "title": "StudioAnimation app",
-      "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
-      "link": "https://github.com/abhishekgusain07/studioanimations.app"
-    },
-    {
-      "id": 6,
-      "title": "FastApi Template ",
-      "description": "A template for building FastAPI applications with a focus on scalability, performance, and maintainability. Features include authentication, database integration, and automated testing.",
-      "link": "https://github.com/abhishekgusain07/prodready_fastapi"
-    },
-    {
-      "id": 7,
-      "title": "OceanSide",
-      "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
-      "link": "https://github.com/abhishekgusain07/ocean-side"
-    },
-    {
-      "id": 8,
-      "title": "Riverside",
-      "description": "A comprehensive social networking platform designed to connect communities through innovative digital interactions. Features include real-time messaging, event planning, and personalized social networking tools.",
-      "link": "https://github.com/abhishekgusain07/riverside"
-    }
-  ]
+  {
+    "id": 2,
+    "title": "OneStopMarketing",
+    "description": "An AI-powered UGC ad creation platform that enables users to generate and edit videos directly in the browser. Features include AI avatar creation, in-browser video editing with Remotion, and automated social media scheduling across multiple platforms.",
+    "techstack": ["Next.js", "Remotion", "OpenAI API", "Cloudflare Workers", "FFmpeg", "TypeScript"],
+    "github": "https://github.com/abhishekgusain07/cloudfare-onestop",
+    "liveDemo": "https://onestopmarketing.app"
+  },
+  {
+    "id": 3,
+    "title": "Downtominutes",
+    "description": "A sophisticated goal-tracking application that helps users break down ambitious objectives into manageable steps. Features systematic planning tools and progress tracking to ensure consistent achievement of personal and professional goals.",
+    "techstack": ["React", "Node.js", "PostgreSQL", "Express", "Chart.js", "TypeScript"],
+    "github": "https://github.com/abhishekgusain07/DownToMinutes",
+    "liveDemo": "https://downtominutes.app"
+  },
+  {
+    "id": 4,
+    "title": "InvoiceManager",
+    "description": "An intelligent invoice management system that streamlines payment tracking and client communication. Features include automated payment reminders, customizable email templates via Resend, and comprehensive invoice tracking with expected payment dates.",
+    "techstack": ["Next.js", "Prisma", "PostgreSQL", "Resend", "Stripe", "TypeScript"],
+    "github": "https://github.com/abhishekgusain07/invoicemanager",
+    "liveDemo": "https://invoicemanager.vercel.app"
+  },
+  {
+    "id": 5,
+    "title": "StudioAnimation app",
+    "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
+    "techstack": ["Python", "Manim", "FastAPI", "React", "OpenAI API", "Docker"],
+    "github": "https://github.com/abhishekgusain07/studioanimations.app",
+    "liveDemo": "https://studioanimations.app"
+  },
+  {
+    "id": 6,
+    "title": "FastApi Template",
+    "description": "A template for building FastAPI applications with a focus on scalability, performance, and maintainability. Features include authentication, database integration, and automated testing.",
+    "techstack": ["FastAPI", "SQLAlchemy", "PostgreSQL", "Docker", "Pytest", "Python"],
+    "github": "https://github.com/abhishekgusain07/prodready_fastapi",
+    "liveDemo": "https://fastapi-template.herokuapp.com"
+  },
+  {
+    "id": 7,
+    "title": "OceanSide",
+    "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
+    "techstack": ["Python", "Manim", "FastAPI", "React", "OpenAI API", "Docker"],
+    "github": "https://github.com/abhishekgusain07/ocean-side",
+    "liveDemo": "https://oceanside.app"
+  },
+  {
+    "id": 8,
+    "title": "Riverside",
+    "description": "A comprehensive social networking platform designed to connect communities through innovative digital interactions. Features include real-time messaging, event planning, and personalized social networking tools.",
+    "techstack": ["React", "Node.js", "Socket.io", "MongoDB", "Express", "Tailwind CSS"],
+    "github": "https://github.com/abhishekgusain07/riverside",
+    "liveDemo": "https://riverside.vercel.app"
+  }
+]
 
   

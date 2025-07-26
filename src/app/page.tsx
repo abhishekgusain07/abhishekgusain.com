@@ -9,10 +9,50 @@ import { RiArrowRightUpLine } from "react-icons/ri";
 import ProjectCard from "@/components/projectCard";
 import ProjectsSection from "@/components/tabsOrigin"
 import GitGraph from "./components/gitgraph"
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
 
 const projects = projectData;
 
-
+const content = [
+  {
+    title: "Collaborative Editing",
+    content: (
+      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
+        Collaborative Editing
+      </div>
+    ),
+  },
+  {
+    title: "Real time changes",
+    content: (
+      <div className="flex h-full w-full items-center justify-center text-white">
+        <img
+          src="/linear.webp"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Version control",
+    content: (
+      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
+        Version control
+      </div>
+    ),
+  },
+  {
+    title: "Running out of content",
+    content: (
+      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
+        Running out of content
+      </div>
+    ),
+  },
+];
 export const metadata: Metadata = {
   title: "Abhishek Gusain",
   description: "engineer at the intersection of design and web development",
