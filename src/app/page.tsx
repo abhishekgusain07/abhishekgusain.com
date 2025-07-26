@@ -10,6 +10,7 @@ import ProjectCard from "@/components/projectCard";
 import ProjectsSection from "@/components/tabsOrigin"
 import GitGraph from "./components/gitgraph"
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
+import { MaskContainer } from "@/components/ui/svg-mask-effect"
 
 const projects = projectData;
 
@@ -86,13 +87,6 @@ export default function Home() {
           </h1>
         </div>
       </div>
-        <div className="flex items-center gap-1.5 font-medium tracking-tight">
-          <h2 className="text-base text-title">builder</h2>
-          <div className="mt-1.5 h-1 w-1 rounded bg-title dark:bg-white bg-black"></div>
-          <h2 className="text-base text-title">creator</h2>
-          <div className="mt-1.5 h-1 w-1 rounded bg-title dark:bg-white bg-black"></div>
-          <h2 className="text-base text-title">innovator</h2>
-        </div>
         <p className="pt-4 text-sm tracking-wide">
           Hi there, I'm <strong className="font-bold">Abhishek Gusain</strong>, a passionate builder and problem-solver. I thrive on 
           creating <span className="dark:text-white text-black font-bold">innovative solutions</span> that 

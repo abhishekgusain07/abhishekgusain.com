@@ -18,6 +18,7 @@ export const StickyScroll = ({
   return (
     <div className="flex gap-8">
       <div className="flex-1 max-w-md">
+        <div className="w-full h-full flex flex-col items-start justify-center">
         {content.map((item, index) => (
           <div 
             key={item.title + index} 
@@ -37,6 +38,7 @@ export const StickyScroll = ({
             </motion.h3>
           </div>
         ))}
+        </div>
       </div>
       <div className={cn(
         "flex-1 min-h-[300px] justify-center items-center",
