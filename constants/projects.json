@@ -9,6 +9,14 @@
     },
     {
       "id": 2,
+      "title": "TextBehindImage",
+      "description": "A modern webapp that creates stunning 3D text-behind-image effects. Users can upload images and add custom text that appears to emerge from behind the subject, creating eye-catching depth and visual impact perfect for social media, posters, and creative designs.",
+      "techstack": ["Vite", "Convex", "Tailwind CSS", "React", "TypeScript", "Polar.sh"],
+      "github": "https://github.com/abhishekgusain07/textbehindimage",
+      "liveDemo": "https://textbehindimage.abhishekgusain.com"
+    },
+    {
+      "id": 3,
       "title": "TweetDigest",
       "description": "An AI-powered tool that aggregates and summarizes content from your favorite X (Twitter) creators in one centralized dashboard.",
       "techstack": ["Next.js", "OpenAI API", "Prisma", "PostgreSQL", "TypeScript"],
@@ -16,7 +24,7 @@
       "liveDemo": "https://tweetdigest.vercel.app"
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "GreenLeaf",
       "description": "A modern Next.js 14 waitlist template with Neon PostgreSQL, Drizzle ORM, Upstash Redis, and Resend for beautiful transactional emails.",
       "techstack": ["Next.js 14", "PostgreSQL", "Drizzle ORM", "Upstash Redis", "Resend", "TypeScript"],
@@ -24,7 +32,7 @@
       "liveDemo": "https://greenleaf-template.vercel.app"
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "PrintMoney",
       "description": "A comprehensive SaaS template designed to accelerate MVP development. Built with Next.js, featuring PostgreSQL (Neon), Drizzle ORM, Better-Auth for authentication, PostHog for analytics, Sentry for error tracking, and Stripe for payment processing.",
       "techstack": ["Next.js", "PostgreSQL", "Drizzle ORM", "Better-Auth", "PostHog", "Sentry", "Stripe", "TypeScript"],
@@ -32,7 +40,7 @@
       "liveDemo": "https://printmoney.vercel.app"
     },
     {
-      "id": 5,
+      "id": 6,
       "title": "WorkQueue-Py",
       "description": "A distributed background job processor built with FastAPI, Celery, and Redis — perfect for async task handling like emails, image processing, and more.",
       "techstack": ["FastAPI", "Celery", "Redis", "Python", "Docker", "PostgreSQL"],

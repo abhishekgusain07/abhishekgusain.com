@@ -1,11 +1,11 @@
 [
   {
-    "id": 0,
-    "title": "Calassist: AI-powered Calendar Assistant",
-    "description": "Connect your gmail calendar talk to it like a personal assistant",
-    "techstack": ["Next.js", "OpenAI API", "Google Calendar API", "Prisma", "TypeScript"],
-    "github": "https://github.com/abhishekgusain07/calassist",
-    "liveDemo": "https://calassist.vercel.app"
+    "id": 1,
+    "title": "RocketStack",
+    "description": "Turborepo template: A fullstack typesafe turborepo template that helps user ship the mvp fast without thinking about the boiler plate code too much, Velocity is the currency for SaaS products",
+    "techstack": ["React", "Nextjs", "Turborep", "PostgreSQL", "Polarsh", "Posthog", "Polar.sh"],
+    "github": "https://github.com/abhishekgusain07/turborepo-trpc-drizzle.starterkit",
+    "liveDemo": "https://rocketstack.abhishekgusain.com"
   },
   {
     "id": 1,
@@ -22,14 +22,6 @@
     "techstack": ["Next.js", "Remotion", "OpenAI API", "Cloudflare Workers", "FFmpeg", "TypeScript"],
     "github": "https://github.com/abhishekgusain07/cloudfare-onestop",
     "liveDemo": "https://onestopmarketing.app"
-  },
-  {
-    "id": 3,
-    "title": "Downtominutes",
-    "description": "A sophisticated goal-tracking application that helps users break down ambitious objectives into manageable steps. Features systematic planning tools and progress tracking to ensure consistent achievement of personal and professional goals.",
-    "techstack": ["React", "Node.js", "PostgreSQL", "Express", "Chart.js", "TypeScript"],
-    "github": "https://github.com/abhishekgusain07/DownToMinutes",
-    "liveDemo": "https://downtominutes.app"
   },
   {
     "id": 4,
@@ -56,19 +48,11 @@
     "liveDemo": "https://fastapi-template.herokuapp.com"
   },
   {
-    "id": 7,
-    "title": "OceanSide",
-    "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
-    "techstack": ["Python", "Manim", "FastAPI", "React", "OpenAI API", "Docker"],
-    "github": "https://github.com/abhishekgusain07/ocean-side",
-    "liveDemo": "https://oceanside.app"
-  },
-  {
     "id": 8,
-    "title": "Riverside",
-    "description": "A comprehensive social networking platform designed to connect communities through innovative digital interactions. Features include real-time messaging, event planning, and personalized social networking tools.",
-    "techstack": ["React", "Node.js", "Socket.io", "MongoDB", "Express", "Tailwind CSS"],
-    "github": "https://github.com/abhishekgusain07/riverside",
+    "title": "OceanSide",
+    "description": "A professional podcast recording platform that enables seamless online collaboration. Users connect via WebRTC for real-time audio/video communication, with local recording capabilities and automatic cloud storage to Cloudflare R2. Perfect for remote podcast interviews, team discussions, and content creation.",
+    "techstack": ["Next.js", "FastAPI", "WebRTC", "Cloudflare R2", "Python", "TypeScript", "PostgreSQL"],
+    "github": "https://github.com/abhishekgusain07/oceanside_backend",
     "liveDemo": "https://riverside.vercel.app"
   }
 ]
