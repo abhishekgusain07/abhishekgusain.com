@@ -1,1 +1,2 @@
 bun run lint
+bunx prettier --write . && git add -A

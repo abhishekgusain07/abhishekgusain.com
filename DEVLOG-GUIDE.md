@@ -24,34 +24,42 @@ npm run new-log 2025-01-26
 
 Each devlog entry follows this structure:
 
-```markdown
+````markdown
 # Daily Log - Saturday, January 25, 2025
 
 ## What I worked on today
+
 - Feature implementation
 - Bug fixes
 - Learning new concepts
 
 ## Challenges faced
+
 - Specific problems you encountered
 - How you approached solving them
 
 ## What I learned
+
 Key insights and discoveries from the day
 
 ## Code snippet of the day
+
 ```typescript
 // Share interesting code you wrote
 const example = "meaningful code snippet";
 ```
+````
 
 ## Tomorrow's plan
+
 - Next steps
 - Goals for tomorrow
 
 ## Reflection
+
 Personal thoughts about progress and growth
-```
+
+````
 
 ## ✨ Automatic File Discovery
 
@@ -69,11 +77,11 @@ Let's say you want to add today's entry:
 1. **Generate template:**
    ```bash
    npm run new-log
-   ```
+````
 
 2. **Fill in your content** in the created MDX file
 
-3. **Save the file** - that's it! 
+3. **Save the file** - that's it!
 
 4. **Visit `/logs`** to see your entry appear automatically
 
@@ -114,16 +122,16 @@ Let's say you want to add today's entry:
 ```typescript
 // src/lib/logs.ts - Automatic file discovery
 export function getAvailableLogs(): LogEntry[] {
-  const logsDirectory = path.join(process.cwd(), 'src', 'logs')
-  const files = fs.readdirSync(logsDirectory)
-  
+  const logsDirectory = path.join(process.cwd(), "src", "logs");
+  const files = fs.readdirSync(logsDirectory);
+
   return files
-    .filter(file => file.endsWith('.mdx'))
-    .filter(file => /^\d{4}-\d{2}-\d{2}\.mdx$/.test(file))
-    .map(file => ({ 
-      date: file.replace('.mdx', ''),
+    .filter((file) => file.endsWith(".mdx"))
+    .filter((file) => /^\d{4}-\d{2}-\d{2}\.mdx$/.test(file))
+    .map((file) => ({
+      date: file.replace(".mdx", ""),
       // ... other properties
-    }))
+    }));
 }
 ```
 
@@ -147,7 +155,7 @@ export function getAvailableLogs(): LogEntry[] {
 ## 🚨 Important Notes
 
 - **Date Format**: Always use YYYY-MM-DD format for file names
-- **File Location**: All log files go in `src/logs/` directory  
+- **File Location**: All log files go in `src/logs/` directory
 - **File Extension**: Use `.mdx` extension for all log files
 - **Content Structure**: Following the template helps maintain readability
 
@@ -156,10 +164,10 @@ export function getAvailableLogs(): LogEntry[] {
 Now that automatic discovery is implemented, potential next steps:
 
 - [ ] Full MDX processing with React components
-- [ ] Syntax highlighting for code blocks  
+- [ ] Syntax highlighting for code blocks
 - [ ] Search functionality across all entries
 - [ ] Tags and categorization system
 - [ ] RSS feed generation
 - [ ] Previous/Next navigation between entries
 
-This devlog system now provides a seamless experience - just write your logs and they appear automatically! 🎯 
+This devlog system now provides a seamless experience - just write your logs and they appear automatically! 🎯

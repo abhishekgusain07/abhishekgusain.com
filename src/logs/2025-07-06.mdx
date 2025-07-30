@@ -1,7 +1,14 @@
 ---
 title: "Daily Log - Sunday, July 6, 2025"
 date: "2025-07-06"
-tags: ["development", "onestopmarketing", "instagram", "facebook-api", "legal-bullshit"]
+tags:
+  [
+    "development",
+    "onestopmarketing",
+    "instagram",
+    "facebook-api",
+    "legal-bullshit",
+  ]
 ---
 
 # Daily Log - Sunday, July 6, 2025
@@ -9,6 +16,7 @@ tags: ["development", "onestopmarketing", "instagram", "facebook-api", "legal-bu
 ## What I worked on today
 
 ### OneStopMarketing - Instagram Integration
+
 started working on instagram integration for the slideshow feature. this should be straightforward since i've dealt with facebook's api before but... nope. still a nightmare.
 
 first issue - facebook requires you to have privacy policy and terms of service pages with live urls before they'll even let you create an app. so i had to pause the main development and create a separate app just for hosting legal pages.
@@ -18,6 +26,7 @@ built a simple nextjs app called "postscheduler" (creative name, i know) that ju
 the privacy policy and terms took forever to write. had to make sure it covers all the data collection stuff for both onestopmarketing and postahead since i'll use the same legal pages for both apps.
 
 ### Facebook Developer Experience - Still Trash
+
 jesus christ facebook's developer experience is the worst thing i've ever used. not because it's slow or buggy (though it is), but because they make everything unnecessarily difficult.
 
 you can't add test users unless they convert their personal account to a developer account. what the fuck? who designed this?
@@ -25,18 +34,22 @@ you can't add test users unless they convert their personal account to a develop
 the documentation is inconsistent and half the links are broken. the review process is a black box - they reject apps without clear reasons and you have to guess what's wrong.
 
 ## what i got done
+
 - built and deployed legal pages app
 - wrote privacy policy and terms of service
 - started instagram api integration setup
 - configured facebook app for instagram posting
 
 ## what's still broken
+
 - can't properly test instagram integration without real users
 - facebook's approval process is gonna take weeks
 - slideshow format compatibility with instagram is questionable
 
 ## tomorrow's plan
+
 gonna continue with the instagram integration and hopefully get the slideshow posting working. also need to test the cross-platform format - tiktok and instagram have different aspect ratio preferences.
 
 ## rant
+
 why do big tech companies make it so hard for developers to build on their platforms? it's like they actively don't want third-party apps. meanwhile they complain about lack of innovation in their ecosystems. make it make sense.

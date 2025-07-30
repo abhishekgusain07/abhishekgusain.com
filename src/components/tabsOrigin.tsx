@@ -1,14 +1,9 @@
-"use client"
+"use client";
 import { useState } from "react";
-import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-  } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import completedProjects from "../../constants/projects.json"
-import ongoingProjects from "../../constants/ongoingProjects.json"
+import completedProjects from "../../constants/projects.json";
+import ongoingProjects from "../../constants/ongoingProjects.json";
 
 import { StickyScroll } from "./ui/sticky-scroll-reveal";
 import ProjectContent from "./ProjectContent";
@@ -24,17 +19,17 @@ interface Project {
 
 const CompletedProjects = completedProjects as Project[];
 const OngoingProjects = ongoingProjects as Project[];
-  
+
 export default function ProjectsSection() {
   // Transform projects data for StickyScroll component
-  const completedContent = CompletedProjects.map(project => ({
+  const completedContent = CompletedProjects.map((project) => ({
     title: project.title,
-    content: <ProjectContent project={project} />
+    content: <ProjectContent project={project} />,
   }));
 
-  const ongoingContent = OngoingProjects.map(project => ({
+  const ongoingContent = OngoingProjects.map((project) => ({
     title: project.title,
-    content: <ProjectContent project={project} />
+    content: <ProjectContent project={project} />,
   }));
 
   return (
@@ -54,6 +49,5 @@ export default function ProjectsSection() {
         </div>
       </TabsContent>
     </Tabs>
-  )
+  );
 }
-  

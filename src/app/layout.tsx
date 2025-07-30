@@ -1,12 +1,12 @@
-import type { Metadata } from "next"
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { ThemeScript } from "@/components/theme-script"
+import type { Metadata } from "next";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeScript } from "@/components/theme-script";
 
 export const metadata: Metadata = {
   title: "Abhishek Gusain ",
   description: "engineer at the intersection of design and web development",
-}
+};
 
 // Script to prevent flash of unstyled content
 function ThemeInitScript() {
@@ -29,7 +29,7 @@ function ThemeInitScript() {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -48,5 +48,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

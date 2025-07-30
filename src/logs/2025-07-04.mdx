@@ -9,6 +9,7 @@ tags: ["development", "nestjs", "turborepo", "setup"]
 ## What I worked on today
 
 ### PostAhead - NestJS Turbo Repo Deep Dive
+
 today was all about getting familiar with turborepo and nestjs monorepo setup. holy shit this is so much better than managing separate repos for each service.
 
 spent the morning setting up the basic structure - backend app, worker app, and scheduler app all in one repo. the turborepo caching is insane, builds are like 10x faster than what i'm used to.
@@ -20,13 +21,16 @@ the hot reload setup was tricky but got it working. now i can run all three serv
 also played around with the build pipelines. turborepo's dependency graph is really smart - it only rebuilds what actually changed. coming from webpack hell this feels like magic.
 
 ## what i learned
+
 - turborepo is a game changer for monorepos
 - nestjs apps can share modules easily when structured properly
 - proper workspace setup saves hours of config headaches
 - build caching is worth the initial setup complexity
 
 ## tomorrow's plan
+
 time to start implementing the actual redis + bullmq integration. got the foundation ready, now for the fun part.
 
 ## side note
+
 why didn't i start with monorepo from the beginning? separate repos for related services is such a pain in the ass to manage.

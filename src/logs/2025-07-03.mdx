@@ -9,11 +9,13 @@ tags: ["development", "postahead", "nestjs", "planning"]
 ## What I worked on today
 
 ### PostAhead (Social Media Scheduler)
+
 so today i finally sat down and figured out how the fuck i'm gonna implement the scheduling system for postahead. been putting this off for way too long but today i dove deep into research.
 
 found this open source project that does exactly what i need - it's like postiz but simpler. spent hours going through their codebase to understand how they handle the scheduling part. turns out they use redis + bullmq which makes sense, i was thinking about using some shitty cron job approach but this is way better.
 
 basically the idea is:
+
 - backend receives the post request with scheduled time
 - throws it into a redis queue with delay
 - worker process picks it up when it's time and actually posts to the platform
@@ -23,13 +25,16 @@ the architecture they use is clean - separate services for api, worker, and sche
 also started sketching out the database schema. need tables for posts, media, job tracking, all that stuff. this is gonna be way more complex than i initially thought but at least now i have a plan.
 
 ## key stuff i learned today
+
 - redis + bullmq is the way to go for job scheduling
 - separate services makes way more sense than monolith
 - need to think about timezone handling from day one (this is gonna be a pain)
 - oauth token refresh is gonna be another headache
 
 ## next steps
+
 tomorrow i'm gonna play around with nestjs turbo repo setup. want to get the structure right before i start building anything.
 
 ## random thoughts
+
 why do all these scheduling apps look like shit? when i build postahead i want it to actually look good, not like some 2010 bootstrap template.

@@ -10,36 +10,36 @@ The portfolio currently showcases projects and professional information. A devlo
 
 ## 3. Goals
 
-*   To create a dedicated section for daily logs at the route `/logs/[date]`.
-*   To enable the author to easily create and publish new log entries.
-*   To present the logs in a clean, readable, and accessible format.
-*   To integrate the new section seamlessly with the existing design and navigation of the portfolio.
+- To create a dedicated section for daily logs at the route `/logs/[date]`.
+- To enable the author to easily create and publish new log entries.
+- To present the logs in a clean, readable, and accessible format.
+- To integrate the new section seamlessly with the existing design and navigation of the portfolio.
 
 ## 4. Feature Requirements
 
 ### 4.1. Dynamic Routing
 
-*   The devlogs will be accessible via dynamic routes based on the date, e.g., `/logs/2025-06-30`.
-*   The date format in the URL will be `YYYY-MM-DD`.
+- The devlogs will be accessible via dynamic routes based on the date, e.g., `/logs/2025-06-30`.
+- The date format in the URL will be `YYYY-MM-DD`.
 
 ### 4.2. Log Entry Creation
 
-*   For the initial implementation (MVP), log entries will be created as Markdown files (`.md` or `.mdx`) within the project structure. This is the simplest approach and avoids the need for a database or a complex CMS.
-*   A new directory, `src/app/logs/`, will be created to store these Markdown files.
-*   Each log entry will be a separate Markdown file, named after the date, e.g., `2025-06-30.mdx`.
+- For the initial implementation (MVP), log entries will be created as Markdown files (`.md` or `.mdx`) within the project structure. This is the simplest approach and avoids the need for a database or a complex CMS.
+- A new directory, `src/app/logs/`, will be created to store these Markdown files.
+- Each log entry will be a separate Markdown file, named after the date, e.g., `2025-06-30.mdx`.
 
 ### 4.3. Log Entry Display
 
-*   A new page component will be created at `src/app/logs/[date]/page.tsx` to render the Markdown content.
-*   The page will dynamically fetch the content of the corresponding Markdown file based on the `date` parameter from the URL.
-*   The rendered page will display the formatted content of the Markdown file.
-*   The page should have a consistent layout with the rest of the portfolio, including the header, footer, and theme.
+- A new page component will be created at `src/app/logs/[date]/page.tsx` to render the Markdown content.
+- The page will dynamically fetch the content of the corresponding Markdown file based on the `date` parameter from the URL.
+- The rendered page will display the formatted content of the Markdown file.
+- The page should have a consistent layout with the rest of the portfolio, including the header, footer, and theme.
 
 ### 4.4. Content and Styling
 
-*   The log entries will be written in Markdown, allowing for easy formatting of text, code blocks, lists, and links.
-*   The styling of the rendered Markdown should be consistent with the overall aesthetic of the portfolio. This includes typography, colors, and spacing.
-*   Code blocks should have syntax highlighting.
+- The log entries will be written in Markdown, allowing for easy formatting of text, code blocks, lists, and links.
+- The styling of the rendered Markdown should be consistent with the overall aesthetic of the portfolio. This includes typography, colors, and spacing.
+- Code blocks should have syntax highlighting.
 
 ## 5. Technical Implementation Plan
 
@@ -65,34 +65,34 @@ The portfolio currently showcases projects and professional information. A devlo
 
 ### Step 4: Add Navigation (Optional but Recommended)
 
-*   Add a link to the devlog section in the main navigation of the portfolio. This could be a link to a new `/logs` page that lists all the available logs.
+- Add a link to the devlog section in the main navigation of the portfolio. This could be a link to a new `/logs` page that lists all the available logs.
 
 ### Step 5: Styling
 
-*   Ensure the rendered Markdown content is styled correctly. This might involve adding styles to `globals.css` or creating a dedicated stylesheet for the log pages.
-*   Pay special attention to the styling of headings, paragraphs, lists, links, and code blocks.
+- Ensure the rendered Markdown content is styled correctly. This might involve adding styles to `globals.css` or creating a dedicated stylesheet for the log pages.
+- Pay special attention to the styling of headings, paragraphs, lists, links, and code blocks.
 
 ## 6. Data Storage
 
-*   Log entries will be stored as `.mdx` files in the `src/logs` directory.
-*   This approach is chosen for its simplicity and the fact that it keeps the content version-controlled with the rest of the codebase.
+- Log entries will be stored as `.mdx` files in the `src/logs` directory.
+- This approach is chosen for its simplicity and the fact that it keeps the content version-controlled with the rest of the codebase.
 
 ## 7. UI/UX
 
-*   The log pages will have a minimalist design, focusing on readability.
-*   The layout will be consistent with the existing pages.
-*   A clear title indicating the date of the log entry will be displayed.
+- The log pages will have a minimalist design, focusing on readability.
+- The layout will be consistent with the existing pages.
+- A clear title indicating the date of the log entry will be displayed.
 
 ## 8. Timeline
 
 This is a relatively small feature and can be implemented in a few hours.
 
-*   **Milestone 1: Basic Implementation (2-3 hours)**
-    *   Set up the directory structure.
-    *   Create the dynamic page component.
-    *   Implement the logic to read and display a single log entry.
-*   **Milestone 2: Styling and Refinement (1-2 hours)**
-    *   Apply styles to the rendered Markdown.
-    -   Ensure the page is responsive and looks good on all devices.
+- **Milestone 1: Basic Implementation (2-3 hours)**
+  - Set up the directory structure.
+  - Create the dynamic page component.
+  - Implement the logic to read and display a single log entry.
+- **Milestone 2: Styling and Refinement (1-2 hours)**
+  - Apply styles to the rendered Markdown.
+  * Ensure the page is responsive and looks good on all devices.
 
 This plan provides a clear path for an engineer to implement the devlog feature. It is detailed enough to be actionable, yet flexible enough to allow for minor adjustments during development.

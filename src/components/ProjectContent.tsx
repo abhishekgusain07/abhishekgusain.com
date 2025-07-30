@@ -22,7 +22,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project }) => {
           {project.description}
         </p>
       </div>
-      
+
       <div>
         <h4 className="text-sm font-medium text-title mb-3">Tech Stack</h4>
         <div className="flex flex-wrap gap-2">
@@ -36,7 +36,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project }) => {
           ))}
         </div>
       </div>
-      
+
       <div className="flex gap-3">
         <a
           href={project.github}

@@ -13,23 +13,36 @@ export const GithubGraph = ({
   colorPalette,
 }: GithubGraphProps) => {
   const labels = {
-    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    totalCount: '{{count}} contributions in the last year',
+    months: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    totalCount: "{{count}} contributions in the last year",
     legend: {
-      less: 'Less',
-      more: 'More',
+      less: "Less",
+      more: "More",
     },
   };
 
   // Default color palette that works well in both themes
   const defaultPalette = [
-    "#ffffff",  // No contributions
-    "#e0f2fe",  // Lightest blue
-    "#7dd3fc",  // Light blue
-    "#38bdf8",  // Medium blue
-    "#0284c7",  // Dark blue
-    "#0369a1",  // Darkest blue
+    "#ffffff", // No contributions
+    "#e0f2fe", // Lightest blue
+    "#7dd3fc", // Light blue
+    "#38bdf8", // Medium blue
+    "#0284c7", // Dark blue
+    "#0369a1", // Darkest blue
   ];
 
   return (

@@ -1,16 +1,16 @@
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { socials } from "../../constants/social"
-import projectData from "../../constants/projects.json"
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { socials } from "../../constants/social";
+import projectData from "../../constants/projects.json";
 import { PiLightbulbFill } from "react-icons/pi";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import ProjectCard from "@/components/projectCard";
-import ProjectsSection from "@/components/tabsOrigin"
-import GitGraph from "./components/gitgraph"
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
-import { MaskContainer } from "@/components/ui/svg-mask-effect"
+import ProjectsSection from "@/components/tabsOrigin";
+import GitGraph from "./components/gitgraph";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import { MaskContainer } from "@/components/ui/svg-mask-effect";
 
 const projects = projectData;
 
@@ -57,7 +57,7 @@ const content = [
 export const metadata: Metadata = {
   title: "Abhishek Gusain",
   description: "engineer at the intersection of design and web development",
-}
+};
 
 // Icon component for consistent logo display
 const Icon = ({ src, alt }: { src: string; alt: string }) => (
@@ -87,31 +87,37 @@ export default function Home() {
           </h1>
         </div>
       </div>
-        <p className="pt-4 text-sm tracking-wide">
-          Hi there, I'm <strong className="font-bold">Abhishek Gusain</strong>, a passionate builder and problem-solver. I thrive on 
-          creating <span className="dark:text-white text-black font-bold">innovative solutions</span> that 
-          make people's lives better. Always <span className="dark:text-white text-black">alert and aware</span>, 
-          I love <strong className="font-bold">connecting with new people</strong> and embracing fresh experiences. My journey is fueled by{" "}
-          <span className="dark:text-white text-black font-bold">curiosity</span> and a drive to transform ideas into{" "}
-          <span className="dark:text-white text-black">meaningful impact</span>.
-          When I'm not coding, you'll find me exploring new perspectives and <strong className="font-bold">pushing boundaries</strong>.
-        </p>
+      <p className="pt-4 text-sm tracking-wide">
+        Hi there, I'm <strong className="font-bold">Abhishek Gusain</strong>, a
+        passionate builder and problem-solver. I thrive on creating{" "}
+        <span className="dark:text-white text-black font-bold">
+          innovative solutions
+        </span>{" "}
+        that make people's lives better. Always{" "}
+        <span className="dark:text-white text-black">alert and aware</span>, I
+        love <strong className="font-bold">connecting with new people</strong>{" "}
+        and embracing fresh experiences. My journey is fueled by{" "}
+        <span className="dark:text-white text-black font-bold">curiosity</span>{" "}
+        and a drive to transform ideas into{" "}
+        <span className="dark:text-white text-black">meaningful impact</span>.
+        When I'm not coding, you'll find me exploring new perspectives and{" "}
+        <strong className="font-bold">pushing boundaries</strong>.
+      </p>
 
       <div className="w-fit grid grid-cols-3 gap-2 pt-4 tracking-tight md:flex md:flex-row md:items-start">
-        {
-          socials.map((social) => (
-            <a
-              key={social.id}
-              href={social.url}
-              target={social.target}
-              rel={social.target === "_blank" ? "noopener noreferrer" : undefined}
-              className="group flex items-center underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline">
-              <social.icon className="" />
-              <span className="text-sm">{social.name}</span>
-              <RiArrowRightUpLine className="opacity-0 transition-opacity duration-150 md:group-hover:opacity-100" />
-            </a>
-          ))
-        }
+        {socials.map((social) => (
+          <a
+            key={social.id}
+            href={social.url}
+            target={social.target}
+            rel={social.target === "_blank" ? "noopener noreferrer" : undefined}
+            className="group flex items-center underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline"
+          >
+            <social.icon className="" />
+            <span className="text-sm">{social.name}</span>
+            <RiArrowRightUpLine className="opacity-0 transition-opacity duration-150 md:group-hover:opacity-100" />
+          </a>
+        ))}
         {/* <Link
           href="/logs"
           className="group flex items-center underline-offset-4 transition duration-150 ease-in-out md:hover:text-primary md:hover:underline"
@@ -127,9 +133,11 @@ export default function Home() {
         <ProjectsSection />
       </section>
       <section className="pt-8">
-        <h2 className="font-medium tracking-tight text-title mb-2">Github Contributions</h2>
+        <h2 className="font-medium tracking-tight text-title mb-2">
+          Github Contributions
+        </h2>
         <GitGraph />
       </section>
     </main>
-  )
+  );
 }

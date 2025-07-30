@@ -3,7 +3,15 @@
     "id": 1,
     "title": "RocketStack",
     "description": "Turborepo template: A fullstack typesafe turborepo template that helps user ship the mvp fast without thinking about the boiler plate code too much, Velocity is the currency for SaaS products",
-    "techstack": ["React", "Nextjs", "Turborep", "PostgreSQL", "Polarsh", "Posthog", "Polar.sh"],
+    "techstack": [
+      "React",
+      "Nextjs",
+      "Turborep",
+      "PostgreSQL",
+      "Polarsh",
+      "Posthog",
+      "Polar.sh"
+    ],
     "github": "https://github.com/abhishekgusain07/turborepo-trpc-drizzle.starterkit",
     "liveDemo": "https://rocketstack.abhishekgusain.com"
   },
@@ -11,7 +19,14 @@
     "id": 1,
     "title": "Postahead",
     "description": "A social media scheduling platform that allows users to schedule posts to their social media accounts, including X, Instagram, YouTube, TikTok, and LinkedIn.",
-    "techstack": ["React", "Node.js", "Express", "MongoDB", "Social Media APIs", "Bull Queue"],
+    "techstack": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Social Media APIs",
+      "Bull Queue"
+    ],
     "github": "https://github.com/abhishekgusain07/postit.app",
     "liveDemo": "https://postahead.vercel.app"
   },
@@ -19,7 +34,14 @@
     "id": 2,
     "title": "OneStopMarketing",
     "description": "An AI-powered UGC ad creation platform that enables users to generate and edit videos directly in the browser. Features include AI avatar creation, in-browser video editing with Remotion, and automated social media scheduling across multiple platforms.",
-    "techstack": ["Next.js", "Remotion", "OpenAI API", "Cloudflare Workers", "FFmpeg", "TypeScript"],
+    "techstack": [
+      "Next.js",
+      "Remotion",
+      "OpenAI API",
+      "Cloudflare Workers",
+      "FFmpeg",
+      "TypeScript"
+    ],
     "github": "https://github.com/abhishekgusain07/cloudfare-onestop",
     "liveDemo": "https://onestopmarketing.app"
   },
@@ -27,7 +49,14 @@
     "id": 4,
     "title": "InvoiceManager",
     "description": "An intelligent invoice management system that streamlines payment tracking and client communication. Features include automated payment reminders, customizable email templates via Resend, and comprehensive invoice tracking with expected payment dates.",
-    "techstack": ["Next.js", "Prisma", "PostgreSQL", "Resend", "Stripe", "TypeScript"],
+    "techstack": [
+      "Next.js",
+      "Prisma",
+      "PostgreSQL",
+      "Resend",
+      "Stripe",
+      "TypeScript"
+    ],
     "github": "https://github.com/abhishekgusain07/invoicemanager",
     "liveDemo": "https://invoicemanager.vercel.app"
   },
@@ -35,7 +64,14 @@
     "id": 5,
     "title": "StudioAnimation app",
     "description": "A web application that enables users to create and share studio-ready animation videos using the Manim library, with support for both AI-generated and personal voiceovers.",
-    "techstack": ["Python", "Manim", "FastAPI", "React", "OpenAI API", "Docker"],
+    "techstack": [
+      "Python",
+      "Manim",
+      "FastAPI",
+      "React",
+      "OpenAI API",
+      "Docker"
+    ],
     "github": "https://github.com/abhishekgusain07/studioanimations.app",
     "liveDemo": "https://studioanimations.app"
   },
@@ -43,7 +79,14 @@
     "id": 6,
     "title": "FastApi Template",
     "description": "A template for building FastAPI applications with a focus on scalability, performance, and maintainability. Features include authentication, database integration, and automated testing.",
-    "techstack": ["FastAPI", "SQLAlchemy", "PostgreSQL", "Docker", "Pytest", "Python"],
+    "techstack": [
+      "FastAPI",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "Docker",
+      "Pytest",
+      "Python"
+    ],
     "github": "https://github.com/abhishekgusain07/prodready_fastapi",
     "liveDemo": "https://fastapi-template.herokuapp.com"
   },
@@ -51,10 +94,16 @@
     "id": 8,
     "title": "OceanSide",
     "description": "A professional podcast recording platform that enables seamless online collaboration. Users connect via WebRTC for real-time audio/video communication, with local recording capabilities and automatic cloud storage to Cloudflare R2. Perfect for remote podcast interviews, team discussions, and content creation.",
-    "techstack": ["Next.js", "FastAPI", "WebRTC", "Cloudflare R2", "Python", "TypeScript", "PostgreSQL"],
+    "techstack": [
+      "Next.js",
+      "FastAPI",
+      "WebRTC",
+      "Cloudflare R2",
+      "Python",
+      "TypeScript",
+      "PostgreSQL"
+    ],
     "github": "https://github.com/abhishekgusain07/oceanside_backend",
     "liveDemo": "https://riverside.vercel.app"
   }
 ]
-
-  
