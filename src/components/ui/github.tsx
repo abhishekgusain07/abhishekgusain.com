@@ -1,6 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
-import { Activity, ActivityCalendar } from "react-activity-calendar";
+import GitHubCalendar from "react-github-calendar";
 
 type GithubGraphProps = {
   username: string;
@@ -13,31 +12,19 @@ export const GithubGraph = ({
   blockMargin,
   colorPalette,
 }: GithubGraphProps) => {
-  const [contribution, setContribution] = useState<Activity[]>([]);
-  const [loading, setIsLoading] = useState<boolean>(true);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const contributions = await fetchContributionData(username);
-      setContribution(contributions);
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      throw Error(`Error fetching contribution data: ${errorMessage}`);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [username]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  const label = {
-    totalCount: `{{count}} contributions in the last year`,
+  const labels = {
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    totalCount: '{{count}} contributions in the last year',
+    legend: {
+      less: 'Less',
+      more: 'More',
+    },
   };
 
   // Default color palette that works well in both themes
   const defaultPalette = [
+    "#ffffff",  // No contributions
     "#e0f2fe",  // Lightest blue
     "#7dd3fc",  // Light blue
     "#38bdf8",  // Medium blue
@@ -46,28 +33,19 @@ export const GithubGraph = ({
   ];
 
   return (
-    <>
-      <ActivityCalendar
-        data={contribution}
-        maxLevel={4}
-        blockMargin={blockMargin ?? 2}
-        loading={loading}
-        labels={label}
-        theme={{
-          light: colorPalette ?? defaultPalette,
-          dark: colorPalette ?? defaultPalette,
-        }}
-      />
-    </>
+    <div className="w-full flex justify-center overflow-x-auto">
+      <div className="w-full flex justify-center">
+        <GitHubCalendar
+          username={username}
+          blockSize={blockMargin ? blockMargin * 8 : 16}
+          fontSize={16}
+          theme={{
+            light: colorPalette ?? defaultPalette,
+            dark: colorPalette ?? defaultPalette,
+          }}
+          labels={labels}
+        />
+      </div>
+    </div>
   );
 };
-
-async function fetchContributionData(username: string): Promise<Activity[]> {
-  const response = await fetch(`https://github.vineet.pro/api/${username}`);
-  const responseBody = await response.json();
-
-  if (!response.ok) {
-    throw Error("Erroring fetching contribution data");
-  }
-  return responseBody.data;
-}
