@@ -14,7 +14,7 @@ interface Project {
   description: string;
   techstack: string[];
   github: string;
-  liveDemo: string;
+  liveDemo?: string;
 }
 
 const CompletedProjects = completedProjects as Project[];

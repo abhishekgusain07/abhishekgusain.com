@@ -1,5 +1,6 @@
 import React from "react";
 import { RiArrowRightUpLine, RiGithubLine } from "react-icons/ri";
+import toast from "react-hot-toast";
 
 interface Project {
   id: number;
@@ -7,7 +8,7 @@ interface Project {
   description: string;
   techstack: string[];
   github: string;
-  liveDemo: string;
+  liveDemo?: string;
 }
 
 interface ProjectContentProps {
@@ -15,6 +16,20 @@ interface ProjectContentProps {
 }
 
 const ProjectContent: React.FC<ProjectContentProps> = ({ project }) => {
+  const handleLiveDemoClick = () => {
+    if (!project.liveDemo) {
+      toast("🚧 Still in development, will be hosted soon!", {
+        duration: 3000,
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
+      return;
+    }
+    window.open(project.liveDemo, "_blank", "noreferrer");
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -47,15 +62,13 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ project }) => {
           <RiGithubLine className="w-4 h-4" />
           GitHub
         </a>
-        <a
-          href={project.liveDemo}
-          target="_blank"
-          rel="noreferrer"
+        <button
+          onClick={handleLiveDemoClick}
           className="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors rounded-md"
         >
           Live Demo
           <RiArrowRightUpLine className="w-4 h-4" />
-        </a>
+        </button>
       </div>
     </div>
   );

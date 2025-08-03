@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeScript } from "@/components/theme-script";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Abhishek Gusain ",
@@ -45,6 +46,7 @@ export default function RootLayout({
         >
           <ThemeScript />
           {children}
+          <Toaster position="bottom-right" />
         </ThemeProvider>
       </body>
     </html>

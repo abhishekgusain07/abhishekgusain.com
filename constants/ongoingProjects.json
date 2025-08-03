@@ -28,7 +28,7 @@
       "Bull Queue"
     ],
     "github": "https://github.com/abhishekgusain07/postit.app",
-    "liveDemo": "https://postahead.vercel.app"
+    "liveDemo": "https://postahead.abhishekgusain.com"
   },
   {
     "id": 2,
@@ -58,7 +58,7 @@
       "TypeScript"
     ],
     "github": "https://github.com/abhishekgusain07/invoicemanager",
-    "liveDemo": "https://invoicemanager.vercel.app"
+    "liveDemo": "https://invoicemanager.abhishekgusain.app"
   },
   {
     "id": 5,
@@ -72,8 +72,7 @@
       "OpenAI API",
       "Docker"
     ],
-    "github": "https://github.com/abhishekgusain07/studioanimations.app",
-    "liveDemo": "https://studioanimations.app"
+    "github": "https://github.com/abhishekgusain07/studioanimations.app"
   },
   {
     "id": 6,
@@ -87,8 +86,7 @@
       "Pytest",
       "Python"
     ],
-    "github": "https://github.com/abhishekgusain07/prodready_fastapi",
-    "liveDemo": "https://fastapi-template.herokuapp.com"
+    "github": "https://github.com/abhishekgusain07/prodready_fastapi"
   },
   {
     "id": 8,
@@ -103,7 +101,6 @@
       "TypeScript",
       "PostgreSQL"
     ],
-    "github": "https://github.com/abhishekgusain07/oceanside_backend",
-    "liveDemo": "https://riverside.vercel.app"
+    "github": "https://github.com/abhishekgusain07/oceanside_backend"
   }
 ]

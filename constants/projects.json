@@ -80,7 +80,6 @@
       "Docker",
       "PostgreSQL"
     ],
-    "github": "https://github.com/abhishekgusain07/workqueue-py",
-    "liveDemo": "https://workqueue-py.herokuapp.com"
+    "github": "https://github.com/abhishekgusain07/workqueue-py"
   }
 ]
