@@ -102,5 +102,23 @@
       "PostgreSQL"
     ],
     "github": "https://github.com/abhishekgusain07/oceanside_backend"
+  },
+  {
+    "id": 9,
+    "title": "StayUp",
+    "description": "Keep Your Services Running. Keep Your Users Happy. StayUp is a powerful uptime monitoring tool that keeps your websites, APIs, and services online 24/7. Get instant alerts, performance insights, and beautiful status pages to keep your users informed and confident.",
+    "techstack": [
+      "Next.js",
+      "Nestjs",
+      "PostgreSQL",
+      "AWS Lambda",
+      "Redis",
+      "Bull MQ",
+      "Scheduler",
+      "Posthog",
+      "Polar.sh"
+    ],
+    "github": "https://github.com/abhishekgusain07/ststayup.abhishekgusain.comay",
+    "liveDemo": "https://stayup.abhishekgusain.com"
   }
 ]
