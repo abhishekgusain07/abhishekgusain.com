@@ -2,7 +2,7 @@
   {
     "id": 10,
     "title": "t3chat-clone",
-    "description": "I will make a clone of the t3.chat app by theo and make it better. This project is a comprehensive, production-ready SaaS starter kit built with Next.js 15, featuring authentication, subscriptions, AI integration, and modern UI components.",
+    "description": "I think t3.chat is the best AI chat app out there and I am fascinated by its architecture and engineering. so I am attempting to make a AI chat app inspired by it and add some more useful feature in it that I think are misisng in t3.chat",
     "techstack": [
       "Next.js",
       "TypeScript",
