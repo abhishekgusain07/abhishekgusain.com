@@ -1,5 +1,26 @@
 [
   {
+    "id": 10,
+    "title": "t3chat-clone",
+    "description": "I will make a clone of the t3.chat app by theo and make it better. This project is a comprehensive, production-ready SaaS starter kit built with Next.js 15, featuring authentication, subscriptions, AI integration, and modern UI components.",
+    "techstack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Better Auth",
+      "Polar.sh",
+      "Verce AI SDK",
+      "Convex",
+      "Cloudflare R2",
+      "Redis",
+      "PostHog"
+    ],
+    "github": "https://github.com/abhishekgusain07/t3chat-clone"
+  },
+  {
     "id": 1,
     "title": "RocketStack",
     "description": "Turborepo template: A fullstack typesafe turborepo template that helps user ship the mvp fast without thinking about the boiler plate code too much, Velocity is the currency for SaaS products",
@@ -120,5 +141,6 @@
     ],
     "github": "https://github.com/abhishekgusain07/ststayup.abhishekgusain.comay",
     "liveDemo": "https://stayup.abhishekgusain.com"
-  }
+  },
+  {}
 ]
