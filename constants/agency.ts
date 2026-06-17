@@ -54,20 +54,21 @@ export const SECONDARY_CTA = {
 } as const;
 
 export const HERO = {
-  eyebrow: "AI automation for service businesses · forward-deployed engineer",
-  // Outcome-led headline (CityCliq: plain-outcome headlines beat clever ones).
+  eyebrow: "Done-for-you AI automation for service businesses",
+  // Outcome-led headline; the rotating word swaps in the accent colour.
   titleLead: "I build AI systems that",
   titleRotators: [
+    "answer every lead",
+    "win back lost revenue",
     "book more clients",
-    "recover lost revenue",
-    "kill the busywork",
+    "handle the busywork",
   ],
   titleTail: "for your business.",
-  // Subhead = mechanism + objection-handler ("without …").
+  // What I do + how it helps + what it means for their brand. No hype, no "US".
   subhead:
-    "I'm Abhishek — an engineer who installs AI into how your business actually runs, then makes sure it works. You get booked appointments, recovered revenue and hours back. No hype, no buzzwords, and no full-time hire.",
+    "Your business runs on dozens of small jobs — answering leads, booking, follow-ups, reviews. I build AI that handles them for you around the clock, so nothing slips and every customer gets an instant, professional reply. You capture more of the revenue you already earn — and your brand looks sharper than competitors twice your size.",
   microline:
-    "For US service businesses that already have customers and want AI that pays for itself — not a science project.",
+    "Built for service businesses that want to grow — without hiring more people to keep up.",
 } as const;
 
 /**

@@ -1,24 +1,42 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, PhoneCall, Sparkles, CalendarCheck } from "lucide-react";
 import { CtaButton } from "./CtaButton";
 import { HERO, PRIMARY_CTA, SECONDARY_CTA } from "../../../constants/agency";
 
+/**
+ * Rotates the accent word on its own line. An invisible copy of the longest
+ * word reserves the box size, so the headline never reflows or jumps as words
+ * swap — only the orange word crossfades in place.
+ */
 function RotatingOutcome({ words }: { words: readonly string[] }) {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % words.length), 2200);
+    const t = setInterval(() => setI((v) => (v + 1) % words.length), 2600);
     return () => clearInterval(t);
   }, [words.length]);
+
+  const longest = words.reduce((a, b) => (b.length > a.length ? b : a), "");
+
   return (
-    <span className="relative inline-block">
-      <span
-        key={i}
-        className="fade-in-50 animate-in inline-block text-neutral-orangeBg"
-      >
-        {words[i]}
+    <span className="relative block text-neutral-orangeBg">
+      <span className="invisible" aria-hidden>
+        {longest}
       </span>
+      <AnimatePresence initial={false}>
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: "45%" }}
+          animate={{ opacity: 1, y: "0%" }}
+          exit={{ opacity: 0, y: "-45%" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0"
+        >
+          {words[i]}
+        </motion.span>
+      </AnimatePresence>
     </span>
   );
 }
@@ -39,8 +57,9 @@ export function Hero() {
           </p>
 
           <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tighter text-neutral-8 sm:text-5xl dark:text-neutral-dark-8">
-            {HERO.titleLead} <RotatingOutcome words={HERO.titleRotators} />{" "}
-            {HERO.titleTail}
+            <span className="block">{HERO.titleLead}</span>
+            <RotatingOutcome words={HERO.titleRotators} />
+            <span className="block">{HERO.titleTail}</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-neutral-7 dark:text-neutral-dark-7">
