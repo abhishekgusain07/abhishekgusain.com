@@ -7,7 +7,6 @@ import { ProcessSection } from "@/components/landing/ProcessSection";
 import { AboutSection } from "@/components/landing/AboutSection";
 import { GuaranteeSection } from "@/components/landing/GuaranteeSection";
 import { FaqSection } from "@/components/landing/FaqSection";
-import { FinalCta } from "@/components/landing/FinalCta";
 import { ContactSection } from "@/components/landing/ContactSection";
 import { SiteFooter } from "@/components/landing/SiteFooter";
 
@@ -42,7 +41,6 @@ export default function Home() {
         <AboutSection />
         <GuaranteeSection />
         <FaqSection />
-        <FinalCta />
         <ContactSection />
       </main>
       <SiteFooter />

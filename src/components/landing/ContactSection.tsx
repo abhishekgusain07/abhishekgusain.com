@@ -1,54 +1,54 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { ArrowRight, Check, Copy } from "lucide-react";
-import { CONTACT } from "../../../constants/agency";
+import { FINAL_CTA, CONTACT } from "../../../constants/agency";
 
-type Status = "idle" | "submitting" | "done";
+type FormValues = {
+  name: string;
+  email: string;
+  message: string;
+  /** Honeypot — real users never fill this. */
+  company?: string;
+};
 
-const inputClass =
-  "w-full rounded-xl border border-neutral-3 bg-white px-4 py-3 text-sm text-neutral-8 placeholder:text-neutral-5 transition-colors focus:border-neutral-orangeBg focus:outline-none focus:ring-1 focus:ring-neutral-orangeBg dark:border-neutral-dark-3 dark:bg-neutral-dark-1 dark:text-neutral-dark-8 dark:placeholder:text-neutral-dark-5";
+const field =
+  "w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/45 transition-colors focus:border-neutral-orangeBg focus:outline-none focus:ring-1 focus:ring-neutral-orangeBg";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactSection() {
-  const [status, setStatus] = useState<Status>("idle");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormValues>();
+  const [done, setDone] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (status === "submitting") return;
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const payload = {
-      name: data.get("name"),
-      email: data.get("email"),
-      subject: data.get("subject"),
-      message: data.get("message"),
-      company: data.get("company"), // honeypot
-    };
-
-    setStatus("submitting");
+  async function onSubmit(values: FormValues) {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(values),
       });
       const json = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
         error?: string;
       };
       if (res.ok && json.ok) {
-        setStatus("done");
-        form.reset();
+        setDone(true);
+        reset();
         toast.success("Got it — I'll get back to you shortly.");
       } else {
-        setStatus("idle");
         toast.error(json.error || "Something went wrong. Try email instead.");
       }
     } catch {
-      setStatus("idle");
-      toast.error("Network error. Try emailing me directly.");
+      toast.error("Network error — try emailing me directly.");
     }
   }
 
@@ -58,106 +58,154 @@ export function ContactSection() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      /* clipboard unavailable — no-op */
+      /* clipboard unavailable */
     }
   }
 
   return (
     <section id="contact" className="scroll-mt-24 px-4 py-20 sm:py-28">
-      <div className="mx-auto grid max-w-screen-lg gap-12 rounded-3xl border border-neutral-3 bg-neutral-1/60 p-7 sm:p-12 lg:grid-cols-2 dark:border-neutral-dark-3 dark:bg-neutral-dark-1/40">
-        {/* Left: pitch */}
-        <div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-orangeBg">
-            Get in touch
-          </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tighter text-neutral-8 sm:text-4xl dark:text-neutral-dark-8">
-            Let&apos;s find your hidden revenue.
-          </h2>
-          <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-neutral-7 dark:text-neutral-dark-7">
-            Want the free audit, or just have a question about what AI could do
-            in your business? Send it here. It reaches me directly and I
-            actually read it.
-          </p>
-
-          <div className="mt-8 border-t border-neutral-3 pt-6 dark:border-neutral-dark-3">
+      <div className="relative mx-auto max-w-screen-lg overflow-hidden rounded-3xl bg-neutral-8 px-6 py-14 sm:px-12 dark:bg-neutral-dark-2">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-neutral-orangeBg/20 blur-3xl"
+        />
+        <div className="relative mx-auto grid max-w-4xl items-center gap-10 lg:grid-cols-2">
+          {/* Pitch */}
+          <div className="text-center lg:text-left">
+            <h2 className="text-balance text-3xl font-semibold tracking-tighter text-white sm:text-4xl">
+              {FINAL_CTA.title}
+            </h2>
+            <p className="mx-auto mt-5 max-w-md text-pretty text-base leading-relaxed text-neutral-4 lg:mx-0 dark:text-neutral-dark-7">
+              {FINAL_CTA.body}
+            </p>
             <button
               type="button"
               onClick={copyEmail}
-              className="group inline-flex items-center gap-2 text-sm text-neutral-8 dark:text-neutral-dark-8"
+              className="group mt-6 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
-              <span className="font-medium">{CONTACT.email}</span>
+              <span>or email me directly: {CONTACT.email}</span>
               {copied ? (
-                <Check size={15} className="text-neutral-orangeBg" />
+                <Check size={14} className="text-neutral-orangeBg" />
               ) : (
                 <Copy
-                  size={15}
-                  className="text-neutral-5 transition-colors group-hover:text-neutral-orangeBg"
+                  size={14}
+                  className="opacity-60 group-hover:opacity-100"
                 />
               )}
             </button>
-            <p className="mt-1.5 text-xs text-neutral-5 dark:text-neutral-dark-5">
-              Usually replies within a day.
-            </p>
           </div>
+
+          {/* Form */}
+          {done ? (
+            <div className="flex min-h-[18rem] flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-8 text-center">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-neutral-orangeBg/20 text-neutral-orangeBg">
+                <Check size={24} />
+              </span>
+              <p className="mt-4 text-lg font-semibold text-white">
+                Message sent.
+              </p>
+              <p className="mt-1 text-sm text-white/60">
+                I&apos;ll get back to you shortly — usually within a day.
+              </p>
+              <button
+                type="button"
+                onClick={() => setDone(false)}
+                className="mt-5 text-sm font-medium text-neutral-orangeBg hover:underline"
+              >
+                Send another →
+              </button>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              className="flex flex-col gap-3"
+            >
+              {/* Honeypot */}
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+                {...register("company")}
+              />
+
+              <div>
+                <input
+                  placeholder="Your name"
+                  autoComplete="name"
+                  aria-invalid={!!errors.name}
+                  className={field}
+                  {...register("name", {
+                    required: "Please enter your name.",
+                    minLength: { value: 2, message: "Please enter your name." },
+                  })}
+                />
+                {errors.name && (
+                  <p className="mt-1 px-1 text-xs text-[#f4a98c]">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  autoComplete="email"
+                  aria-invalid={!!errors.email}
+                  className={field}
+                  {...register("email", {
+                    required: "Please enter your email.",
+                    pattern: {
+                      value: EMAIL_RE,
+                      message: "Please enter a valid email.",
+                    },
+                  })}
+                />
+                {errors.email && (
+                  <p className="mt-1 px-1 text-xs text-[#f4a98c]">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <textarea
+                  rows={4}
+                  placeholder="What do you need help with? (e.g. missed calls, no-shows, follow-up…)"
+                  aria-invalid={!!errors.message}
+                  className={`${field} resize-y`}
+                  {...register("message", {
+                    required: "Tell me a bit about what you need.",
+                    minLength: {
+                      value: 5,
+                      message: "Tell me a little more so I can help.",
+                    },
+                  })}
+                />
+                {errors.message && (
+                  <p className="mt-1 px-1 text-xs text-[#f4a98c]">
+                    {errors.message.message}
+                  </p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-neutral-orangeBg px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isSubmitting ? "Sending…" : "Book my free audit"}
+                {!isSubmitting && <ArrowRight size={16} />}
+              </button>
+              <p className="text-center text-xs text-white/45">
+                Free · no pitch · you keep the plan either way.
+              </p>
+            </form>
+          )}
         </div>
-
-        {/* Right: form */}
-        <form onSubmit={onSubmit} className="flex flex-col gap-3">
-          {/* Honeypot — visually hidden, off the tab order. */}
-          <input
-            type="text"
-            name="company"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="hidden"
-          />
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            <input
-              name="name"
-              required
-              placeholder="Name"
-              autoComplete="name"
-              className={inputClass}
-            />
-            <input
-              name="email"
-              type="email"
-              required
-              placeholder="Email"
-              autoComplete="email"
-              className={inputClass}
-            />
-          </div>
-
-          <input
-            name="subject"
-            placeholder="What's this about? (your business or website)"
-            className={inputClass}
-          />
-
-          <textarea
-            name="message"
-            required
-            rows={5}
-            placeholder="Tell me a bit more — what's eating the most time or money right now?"
-            className={`${inputClass} resize-y`}
-          />
-
-          <button
-            type="submit"
-            disabled={status === "submitting"}
-            className="inline-flex w-fit items-center justify-center gap-2 rounded-xl bg-neutral-orangeBg px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {status === "submitting"
-              ? "Sending…"
-              : status === "done"
-                ? "Sent ✓"
-                : "Send it"}
-            {status === "idle" && <ArrowRight size={16} />}
-          </button>
-        </form>
       </div>
     </section>
   );

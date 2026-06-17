@@ -48,16 +48,18 @@ describe("agency data integrity", () => {
   it("resolves a working primary CTA and an in-page secondary CTA", () => {
     expect(PRIMARY_CTA.label).toBeTruthy();
     expect(PRIMARY_CTA.href).toBeTruthy();
-    expect(PRIMARY_CTA.href).toMatch(/^(mailto:|https?:\/\/)/);
+    // Either a scheduling URL, or the in-page contact form anchor.
+    expect(PRIMARY_CTA.href).toMatch(/^(#|mailto:|https?:\/\/)/);
     expect(SECONDARY_CTA.href.startsWith("#")).toBe(true);
   });
 
-  it("prefers a calendar link when one is configured", () => {
-    // Guards the swap path: setting LINKS.calendar must take over the CTA.
+  it("prefers a calendar link when configured, else the contact form anchor", () => {
+    // Guards the swap path: setting LINKS.calendar must take over the CTA;
+    // otherwise the CTA scrolls to the on-page form (#contact).
     if (LINKS.calendar) {
       expect(PRIMARY_CTA.href).toBe(LINKS.calendar);
     } else {
-      expect(PRIMARY_CTA.href).toBe(LINKS.bookCall);
+      expect(PRIMARY_CTA.href).toBe("#contact");
     }
   });
 

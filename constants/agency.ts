@@ -40,10 +40,12 @@ export const LINKS = {
   calendar: "" as string,
 } as const;
 
-/** The single primary call-to-action, resolved once. */
+/** The single primary call-to-action, resolved once.
+ *  Defaults to scrolling to the on-page contact form (#contact). If you set
+ *  `LINKS.calendar`, every CTA switches to your scheduling link instead. */
 export const PRIMARY_CTA = {
   label: "Book a free AI audit",
-  href: LINKS.calendar || LINKS.bookCall,
+  href: LINKS.calendar || "#contact",
 } as const;
 
 export const SECONDARY_CTA = {

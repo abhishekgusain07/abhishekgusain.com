@@ -6,7 +6,6 @@ import { ServicesSection } from "../ServicesSection";
 import { ProcessSection } from "../ProcessSection";
 import { AboutSection } from "../AboutSection";
 import { GuaranteeSection } from "../GuaranteeSection";
-import { FinalCta } from "../FinalCta";
 import { FaqSection } from "../FaqSection";
 import { SiteFooter } from "../SiteFooter";
 import {
@@ -15,7 +14,6 @@ import {
   PROCESS,
   ABOUT,
   GUARANTEE,
-  FINAL_CTA,
   FAQS,
   PRIMARY_CTA,
   HERO,
@@ -81,14 +79,6 @@ describe("GuaranteeSection", () => {
   it("renders the risk-reversal", () => {
     render(<GuaranteeSection />);
     expect(screen.getByText(GUARANTEE.title)).toBeInTheDocument();
-  });
-});
-
-describe("FinalCta", () => {
-  it("renders closing title and the primary CTA", () => {
-    render(<FinalCta />);
-    expect(screen.getByText(FINAL_CTA.title)).toBeInTheDocument();
-    expect(screen.getByText(PRIMARY_CTA.label)).toBeInTheDocument();
   });
 });
 

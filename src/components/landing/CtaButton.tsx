@@ -28,10 +28,15 @@ export function CtaButton({
   external,
 }: CtaButtonProps) {
   const classes = cn(base, variants[variant], className);
-  const isExternal =
-    external ?? (href.startsWith("http") || href.startsWith("mailto:"));
+  // Plain <a> for external, mailto, and same-page hash links (native scroll);
+  // next/link only for real route navigations.
+  const isPlainAnchor =
+    external ??
+    (href.startsWith("http") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("#"));
 
-  if (isExternal) {
+  if (isPlainAnchor) {
     return (
       <a
         href={href}
