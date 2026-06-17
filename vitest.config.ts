@@ -1,0 +1,22 @@
+import { defineConfig } from "vitest/config";
+import react from "@vitejs/plugin-react";
+import path from "path";
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+      // Stub next/link so landing components render as plain anchors in jsdom,
+      // decoupling unit tests from the Next.js runtime.
+      "next/link": path.resolve(__dirname, "test/stubs/next-link.tsx"),
+    },
+  },
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: ["./test/setup.ts"],
+    include: ["**/*.test.{ts,tsx}"],
+    exclude: ["node_modules", ".next"],
+  },
+});
