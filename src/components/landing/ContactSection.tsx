@@ -43,12 +43,12 @@ export function ContactSection() {
       if (res.ok && json.ok) {
         setDone(true);
         reset();
-        toast.success("Got it — I'll get back to you shortly.");
+        toast.success("Got it — we'll get back to you shortly.");
       } else {
         toast.error(json.error || "Something went wrong. Try email instead.");
       }
     } catch {
-      toast.error("Network error — try emailing me directly.");
+      toast.error("Network error — try emailing us directly.");
     }
   }
 
@@ -83,7 +83,7 @@ export function ContactSection() {
               onClick={copyEmail}
               className="group mt-6 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
             >
-              <span>or email me directly: {CONTACT.email}</span>
+              <span>or email us directly: {CONTACT.email}</span>
               {copied ? (
                 <Check size={14} className="text-neutral-orangeBg" />
               ) : (
@@ -105,7 +105,7 @@ export function ContactSection() {
                 Message sent.
               </p>
               <p className="mt-1 text-sm text-white/60">
-                I&apos;ll get back to you shortly — usually within a day.
+                We&apos;ll get back to you shortly — usually within a day.
               </p>
               <button
                 type="button"
@@ -178,10 +178,10 @@ export function ContactSection() {
                   aria-invalid={!!errors.message}
                   className={`${field} resize-y`}
                   {...register("message", {
-                    required: "Tell me a bit about what you need.",
+                    required: "Tell us a bit about what you need.",
                     minLength: {
                       value: 5,
-                      message: "Tell me a little more so I can help.",
+                      message: "Tell us a little more so we can help.",
                     },
                   })}
                 />

@@ -49,14 +49,14 @@ export const PRIMARY_CTA = {
 } as const;
 
 export const SECONDARY_CTA = {
-  label: "See what I build",
+  label: "See what we build",
   href: "#services",
 } as const;
 
 export const HERO = {
   eyebrow: "Done-for-you AI automation for service businesses",
   // Outcome-led headline; the rotating word swaps in the accent colour.
-  titleLead: "I build AI systems that",
+  titleLead: "AI systems that",
   titleRotators: [
     "answer every lead",
     "win back lost revenue",
@@ -66,7 +66,7 @@ export const HERO = {
   titleTail: "for your business.",
   // What I do + how it helps + what it means for their brand. No hype, no "US".
   subhead:
-    "Your business runs on dozens of small jobs — answering leads, booking, follow-ups, reviews. I build AI that handles them for you around the clock, so nothing slips and every customer gets an instant, professional reply. You capture more of the revenue you already earn — and your brand looks sharper than competitors twice your size.",
+    "Your business runs on dozens of small jobs — answering leads, booking, follow-ups, reviews. Done-for-you AI handles them around the clock, so nothing slips and every customer gets an instant, professional reply. You capture more of the revenue you already earn — and your brand looks sharper than competitors twice your size.",
   microline:
     "Built for service businesses that want to grow — without hiring more people to keep up.",
 } as const;
@@ -78,7 +78,7 @@ export const HERO = {
 export const PROBLEM = {
   kicker: "The real problem",
   title: "Everyone has AI. Almost nobody is getting results.",
-  body: "Roughly 8 in 10 businesses now use AI — and only about 1 in 16 sees a real bottom-line impact (McKinsey, 2025). The tools aren't the problem. The gap is everything between a shiny demo and a system that quietly runs in your business every day. That's the part I do.",
+  body: "Roughly 8 in 10 businesses now use AI — and only about 1 in 16 sees a real bottom-line impact (McKinsey, 2025). The tools aren't the problem. The gap is everything between a shiny demo and a system that quietly runs in your business every day. That's the gap this closes.",
   pains: [
     {
       stat: "62%",
@@ -159,7 +159,7 @@ export const SERVICES: Service[] = [
     name: "Content Engine",
     promise: "Scroll-stopping content without a production team.",
     detail:
-      "AI-generated reels, before/after visuals and ads in your brand — produced at a quality and pace a template-reselling agency simply can't match. This is what I did before this.",
+      "AI-generated reels, before/after visuals and ads in your brand — produced at a quality and pace a template-reselling agency simply can't match. Built on real AI image, audio and video generation work.",
     flagship: true,
   },
   {
@@ -189,42 +189,42 @@ export const PROCESS: ProcessStep[] = [
     step: "01",
     title: "Audit",
     detail:
-      "I look at how you get and keep customers today and map exactly where money is leaking — missed calls, dead leads, no-shows, manual work. You get a clear plan and the numbers, free, before you spend a rupee. (Yes, even if we never work together.)",
+      "First, a clear map of where your business is leaking money — missed calls, dead leads, no-shows, manual work. You get the plan and the numbers up front, free, before you spend a dollar. Yours to keep, even if we never work together.",
   },
   {
     step: "02",
     title: "Build",
     detail:
-      "I install the specific systems that fix the biggest leaks first — wired into the tools you already use. Because I actually code, it's built around your business and you own it. No duct-taped templates, no black box.",
+      "Next, the systems that fix the biggest leaks go in first — wired into the tools you already use. Everything is custom-built around your business and owned by you. No duct-taped templates, no black box.",
   },
   {
     step: "03",
     title: "Run",
     detail:
-      "I keep it running, watch the numbers, and improve it every month. You get the daily brief and a single person accountable for results — not a ticket queue. We scale what works.",
+      "Then it stays monitored and improved every month, with full accountability for results — not a ticket queue. You get a plain-English daily brief, and whatever works gets scaled.",
   },
 ];
 
 export const ABOUT = {
-  kicker: "Why me",
-  title: "An engineer who ships — not an agency reselling templates.",
+  kicker: "Why it works",
+  title: "Real engineering — not an agency reselling the same template.",
   paragraphs: [
-    'I\'m Abhishek Gusain. I build software for a living, and before this I worked at an AI startup building the systems behind AI image, audio and video generation. So when I say "AI," I mean things I can actually build — not a ChatGPT subscription with a markup.',
-    'Most "AI agencies" resell the same template and disappear. I write the code, wire it into your business, and stay accountable for whether it actually moves your numbers. You own everything I build.',
-    "I work remotely with US businesses, which means I'm fast, async, and a fraction of the cost of a local hire — without cutting corners on quality. The work speaks first: I'll show you the gaps before you ever pay me.",
+    'Most "AI agencies" wire up the same off-the-shelf template, put a markup on a ChatGPT subscription, and disappear. This is the opposite: every system is genuinely built — real code, wired into how your business runs, and owned by you.',
+    'It\'s backed by real production-AI experience, including the systems behind AI image, audio and video generation. So "AI" here means things that actually ship and hold up — not a demo that breaks the first week.',
+    "And the proof comes first: you see exactly where the gaps are, with the numbers, before paying anything.",
   ],
   proofPoints: [
-    "Real engineer — I build custom systems, you own the IP",
-    "Background in AI image / audio / video generation",
-    "One accountable human, not a ticket queue",
-    "Proof first: free audit before any commitment",
+    "Custom-built systems — you own the IP",
+    "Built on real production-AI experience",
+    "Full accountability — no ticket queues",
+    "Proof first: free audit before you commit",
   ],
 } as const;
 
 export const GUARANTEE = {
   kicker: "Risk reversal",
-  title: "The risk is mine, not yours.",
-  body: "Start with the free audit. If I can't point to real, recoverable revenue hiding in your business, we shake hands and part as friends — you keep the plan either way. And when we do build, the first system is tied to a clear outcome: if it doesn't do what I said it would, I fix it free until it does.",
+  title: "The risk sits with us, not you.",
+  body: "Start with the free audit. If it can't point to real, recoverable revenue hiding in your business, you walk away with the plan and owe nothing. And once a system is built, it's tied to a clear outcome — if it doesn't deliver what was promised, it gets fixed free until it does.",
 } as const;
 
 export type Faq = { q: string; a: string };
@@ -232,27 +232,27 @@ export type Faq = { q: string; a: string };
 export const FAQS: Faq[] = [
   {
     q: "Is this just ChatGPT with a markup?",
-    a: "No. I'm an engineer — I build real systems wired into your phone, calendar, CRM and website, and you own them. ChatGPT is one small ingredient, not the product. The value is in the plumbing that makes it run reliably in your business every day.",
+    a: "No. These are real systems wired into your phone, calendar, CRM and website — and you own them. ChatGPT is one small ingredient, not the product. The value is in the engineering that makes it run reliably in your business every single day.",
   },
   {
-    q: "You're remote — does that actually work?",
-    a: "Yes, and it's an advantage. Everything I build is digital, so location is irrelevant to the result. You get faster turnaround, clear async updates, screen-recorded walkthroughs of everything, and a price a local agency can't touch. We hop on a call whenever you want to see it live.",
+    q: "How fast does it go live?",
+    a: "Most first systems are live within a couple of weeks — the audit scopes the exact timeline before anything starts. You see progress as it's built, with screen-recorded walkthroughs of everything, so there are no surprises.",
   },
   {
     q: "What does it cost?",
-    a: "It depends on what's leaking and what we fix — most engagements start with a focused build and a monthly fee to run and improve it. The free audit gives you exact numbers and a scoped quote before you commit to anything. No surprises.",
+    a: "It depends on what's leaking and what gets fixed — most engagements start with a focused build plus a monthly fee to run and improve it. The free audit gives you exact numbers and a scoped quote before you commit to anything.",
   },
   {
     q: "What if something breaks?",
-    a: "I monitor the systems and I'm the one person accountable for them — not a support queue. If something needs attention, it gets handled. You also get the Daily Business Brief so you always know things are running.",
+    a: "The systems are monitored and fully accounted for — not dropped into a support queue. Anything that needs attention gets handled, and the daily brief means you always know things are running.",
   },
   {
-    q: "I've been burned by an 'AI guy' before.",
-    a: "Most people have — that's exactly why I lead with a free audit and a fix-it-free guarantee. You see real value and a clear plan before you pay, and I stay on the hook for results. Proof first, promises never.",
+    q: "We've been burned by an 'AI guy' before.",
+    a: "Most have — which is exactly why it starts with a free audit and a fix-it-free guarantee. You see real value and a clear plan before paying, with full accountability for results. Proof first, promises never.",
   },
   {
-    q: "Do I own what you build?",
-    a: "Completely. It's built into your accounts and your tools, in your name. If we ever stop working together, you keep everything — no hostage situations, no locked black box.",
+    q: "Do we own what's built?",
+    a: "Completely. Everything is built into your accounts and your tools, in your name. If you ever stop, you keep all of it — no hostage situations, no locked black box.",
   },
 ];
 

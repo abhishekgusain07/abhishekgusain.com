@@ -11,8 +11,8 @@ export function SiteFooter() {
             <span className="text-neutral-orangeBg">.</span>
           </p>
           <p className="mt-2 text-sm leading-relaxed text-neutral-6 dark:text-neutral-dark-6">
-            An engineer who installs AI into service businesses and makes it
-            actually work.
+            Done-for-you AI that handles the everyday work your business runs on
+            — leads, bookings, follow-ups and reviews.
           </p>
         </div>
 

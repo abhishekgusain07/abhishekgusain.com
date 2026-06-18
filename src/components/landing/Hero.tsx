@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, PhoneCall, Sparkles, CalendarCheck } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { CtaButton } from "./CtaButton";
+import { HeroScene } from "./HeroScene";
 import { HERO, PRIMARY_CTA, SECONDARY_CTA } from "../../../constants/agency";
 
 /**
@@ -81,87 +82,8 @@ export function Hero() {
           </p>
         </div>
 
-        <HeroSystemVisual />
+        <HeroScene />
       </div>
     </section>
-  );
-}
-
-/**
- * An honest "what happens" diagram: a missed lead flows through the system and
- * becomes a booked appointment. Communicates the mechanism, not stock AI imagery.
- */
-function HeroSystemVisual() {
-  return (
-    <div className="relative mx-auto w-full max-w-sm">
-      <div className="rounded-2xl border border-neutral-3 bg-neutral-1 p-5 shadow-sm dark:border-neutral-dark-3 dark:bg-neutral-dark-1">
-        <FlowRow
-          icon={<PhoneCall size={16} />}
-          title="New lead, 9:47 PM"
-          sub="“Do you have any openings this week?”"
-          tone="muted"
-        />
-        <Connector label="answered in 4 seconds" />
-        <FlowRow
-          icon={<Sparkles size={16} />}
-          title="AI Front Desk replies"
-          sub="Answers, qualifies, offers two time slots."
-          tone="accent"
-        />
-        <Connector label="books straight into your calendar" />
-        <FlowRow
-          icon={<CalendarCheck size={16} />}
-          title="Appointment booked ✓"
-          sub="Confirmation + reminder scheduled."
-          tone="solid"
-        />
-      </div>
-      <div className="mt-3 text-center text-xs text-neutral-5 dark:text-neutral-dark-5">
-        While you were asleep.
-      </div>
-    </div>
-  );
-}
-
-function FlowRow({
-  icon,
-  title,
-  sub,
-  tone,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  sub: string;
-  tone: "muted" | "accent" | "solid";
-}) {
-  const toneClasses = {
-    muted:
-      "border-neutral-3 bg-white text-neutral-6 dark:border-neutral-dark-3 dark:bg-neutral-dark-2 dark:text-neutral-dark-6",
-    accent:
-      "border-neutral-orangeBg/40 bg-neutral-orangeBg/10 text-neutral-orangeBg",
-    solid:
-      "border-neutral-8 bg-neutral-8 text-white dark:border-neutral-dark-8 dark:bg-neutral-dark-8 dark:text-black",
-  } as const;
-  return (
-    <div
-      className={`flex items-start gap-3 rounded-xl border p-3 ${toneClasses[tone]}`}
-    >
-      <span className="mt-0.5 shrink-0">{icon}</span>
-      <div className="min-w-0">
-        <p className="text-sm font-semibold leading-tight">{title}</p>
-        <p className="mt-0.5 text-xs opacity-80">{sub}</p>
-      </div>
-    </div>
-  );
-}
-
-function Connector({ label }: { label: string }) {
-  return (
-    <div className="flex items-center gap-2 py-2 pl-5">
-      <span className="h-5 w-px bg-neutral-3 dark:bg-neutral-dark-3" />
-      <span className="text-[11px] text-neutral-5 dark:text-neutral-dark-5">
-        {label}
-      </span>
-    </div>
   );
 }

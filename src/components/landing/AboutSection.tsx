@@ -26,7 +26,7 @@ export function AboutSection() {
               href="/resume"
               className="font-medium text-neutral-orangeBg underline-offset-4 hover:underline"
             >
-              See my resume and the things I've shipped →
+              See the resume and recent work →
             </Link>
           </p>
         </div>

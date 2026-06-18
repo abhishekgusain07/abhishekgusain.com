@@ -32,7 +32,7 @@ export function ServicesSection() {
       className="bg-neutral-1/60 dark:bg-neutral-dark-1/40"
     >
       <div className="max-w-2xl">
-        <Kicker>What I build</Kicker>
+        <Kicker>What we build</Kicker>
         <SectionTitle>
           Systems with names and jobs — not vague “AI solutions.”
         </SectionTitle>
