@@ -27,16 +27,13 @@ const ICONS: Record<string, LucideIcon> = {
 
 export function ServicesSection() {
   return (
-    <Section
-      id="services"
-      className="bg-neutral-1/60 dark:bg-neutral-dark-1/40"
-    >
+    <Section id="services" number="02" className="bg-[rgba(255,250,240,0.52)]">
       <div className="max-w-2xl">
         <Kicker>What we build</Kicker>
         <SectionTitle>
           Systems with names and jobs — not vague “AI solutions.”
         </SectionTitle>
-        <p className="mt-5 text-pretty text-base leading-relaxed text-neutral-7 dark:text-neutral-dark-7">
+        <p className="mt-5 text-pretty text-base leading-relaxed text-[var(--field-muted)]">
           Each one fixes a specific leak. We start with the one that wins you
           the most money fastest, then stack the rest.
         </p>
@@ -49,34 +46,34 @@ export function ServicesSection() {
             <div
               key={s.name}
               className={cn(
-                "group relative flex flex-col rounded-2xl border p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md",
+                "field-card group relative flex flex-col p-5 transition-all duration-200 hover:-translate-y-0.5",
                 s.flagship
-                  ? "border-neutral-orangeBg/40 bg-neutral-orangeBg/[0.06]"
-                  : "border-neutral-3 bg-white dark:border-neutral-dark-3 dark:bg-neutral-dark-1"
+                  ? "border-[var(--field-rust)] bg-[#fff4df] dark:bg-[var(--field-panel)]"
+                  : ""
               )}
             >
               {s.flagship && (
-                <span className="absolute right-4 top-4 rounded-full bg-neutral-orangeBg px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+                <span className="absolute right-4 top-4 border border-[var(--field-ink)] bg-[var(--field-rust)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-normal text-[var(--field-panel)]">
                   My edge
                 </span>
               )}
               <span
                 className={cn(
-                  "inline-flex h-10 w-10 items-center justify-center rounded-lg",
+                  "inline-flex h-10 w-10 items-center justify-center border",
                   s.flagship
-                    ? "bg-neutral-orangeBg/15 text-neutral-orangeBg"
-                    : "bg-neutral-2 text-neutral-8 dark:bg-neutral-dark-2 dark:text-neutral-dark-8"
+                    ? "border-[var(--field-rust)] bg-[var(--field-paper)] text-[var(--field-rust)]"
+                    : "border-[var(--field-line)] bg-[var(--field-paper)] text-[var(--field-ink)]"
                 )}
               >
                 <Icon size={20} />
               </span>
-              <h3 className="mt-4 text-base font-semibold tracking-tight text-neutral-8 dark:text-neutral-dark-8">
+              <h3 className="mt-4 text-base font-bold tracking-normal text-[var(--field-ink)]">
                 {s.name}
               </h3>
-              <p className="mt-1 text-sm font-medium text-neutral-orangeBg">
+              <p className="mt-1 text-sm font-bold text-[var(--field-rust)]">
                 {s.promise}
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-6 dark:text-neutral-dark-6">
+              <p className="mt-2 text-sm leading-relaxed text-[var(--field-muted)]">
                 {s.detail}
               </p>
             </div>
@@ -84,10 +81,10 @@ export function ServicesSection() {
         })}
       </div>
 
-      <div className="mt-10 flex flex-col items-start gap-3 rounded-2xl border border-neutral-3 bg-white p-6 sm:flex-row sm:items-center sm:justify-between dark:border-neutral-dark-3 dark:bg-neutral-dark-1">
-        <p className="text-sm text-neutral-7 dark:text-neutral-dark-7">
+      <div className="field-ink-panel mt-10 flex flex-col items-start gap-3 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-[var(--field-panel)]">
           Not sure which leak is costing you most?{" "}
-          <span className="font-semibold text-neutral-8 dark:text-neutral-dark-8">
+          <span className="font-bold text-white">
             That's exactly what the free audit tells you.
           </span>
         </p>

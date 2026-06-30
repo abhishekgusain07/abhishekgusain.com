@@ -6,6 +6,7 @@ type SectionProps = {
   className?: string;
   /** Wider than the site's default prose column for richer landing sections. */
   width?: "prose" | "wide";
+  number?: string;
 };
 
 /**
@@ -17,18 +18,30 @@ export function Section({
   children,
   className,
   width = "wide",
+  number,
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={cn("scroll-mt-24 px-4 py-16 sm:py-24", className)}
+      className={cn(
+        "scroll-mt-24 border-t border-[var(--field-line)] px-4 py-16 sm:py-24",
+        className
+      )}
     >
       <div
         className={cn(
-          "mx-auto w-full",
+          "relative mx-auto w-full",
           width === "wide" ? "max-w-screen-lg" : "max-w-screen-md"
         )}
       >
+        {number && (
+          <span
+            aria-hidden
+            className="field-serif mb-6 block text-6xl font-bold leading-none text-[var(--field-rust)] sm:absolute sm:-left-24 sm:top-0 sm:mb-0"
+          >
+            {number}
+          </span>
+        )}
         {children}
       </div>
     </section>
@@ -42,7 +55,7 @@ export function Kicker({ children, className }: KickerProps) {
   return (
     <p
       className={cn(
-        "mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-orangeBg",
+        "mb-3 text-xs font-bold uppercase tracking-normal text-[var(--field-forest)] before:mr-3 before:inline-block before:h-0.5 before:w-9 before:align-middle before:bg-[var(--field-forest)]",
         className
       )}
     >
@@ -57,7 +70,7 @@ export function SectionTitle({ children, className }: SectionTitleProps) {
   return (
     <h2
       className={cn(
-        "text-balance text-3xl font-semibold tracking-tighter text-neutral-8 sm:text-4xl dark:text-neutral-dark-8",
+        "field-serif text-balance text-3xl font-bold leading-tight text-[var(--field-ink)] sm:text-4xl",
         className
       )}
     >

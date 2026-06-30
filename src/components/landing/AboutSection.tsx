@@ -5,7 +5,7 @@ import { ABOUT } from "../../../constants/agency";
 
 export function AboutSection() {
   return (
-    <Section id="about" className="bg-neutral-1/60 dark:bg-neutral-dark-1/40">
+    <Section id="about" number="04" className="bg-[rgba(255,250,240,0.52)]">
       <div className="grid items-start gap-12 lg:grid-cols-[1fr_0.8fr]">
         <div className="max-w-2xl">
           <Kicker>{ABOUT.kicker}</Kicker>
@@ -14,32 +14,30 @@ export function AboutSection() {
             {ABOUT.paragraphs.map((p, i) => (
               <p
                 key={i}
-                className="text-pretty text-base leading-relaxed text-neutral-7 dark:text-neutral-dark-7"
+                className="text-pretty text-base leading-relaxed text-[var(--field-muted)]"
               >
                 {p}
               </p>
             ))}
           </div>
-          <p className="mt-6 text-sm text-neutral-6 dark:text-neutral-dark-6">
+          <p className="mt-6 text-sm text-[var(--field-muted)]">
             Want the full track record?{" "}
             <Link
               href="/resume"
-              className="font-medium text-neutral-orangeBg underline-offset-4 hover:underline"
+              className="font-bold text-[var(--field-rust)] underline-offset-4 hover:underline"
             >
               See the resume and recent work →
             </Link>
           </p>
         </div>
 
-        <ul className="grid gap-3 rounded-2xl border border-neutral-3 bg-white p-6 dark:border-neutral-dark-3 dark:bg-neutral-dark-1">
+        <ul className="field-card grid gap-3 p-6">
           {ABOUT.proofPoints.map((point) => (
             <li key={point} className="flex items-start gap-3">
-              <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-orangeBg/15 text-neutral-orangeBg">
+              <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center border border-[var(--field-line)] bg-[var(--field-paper)] text-[var(--field-forest)]">
                 <Check size={13} />
               </span>
-              <span className="text-sm text-neutral-7 dark:text-neutral-dark-7">
-                {point}
-              </span>
+              <span className="text-sm text-[var(--field-muted)]">{point}</span>
             </li>
           ))}
         </ul>

@@ -41,10 +41,10 @@ export function ShareButton({ date }: ShareButtonProps) {
   return (
     <button
       onClick={handleShare}
-      className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 hover:bg-neutral-2 dark:hover:bg-neutral-dark-2 ${
+      className={`inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap border border-[var(--field-ink)] bg-[var(--field-panel)] px-4 text-sm font-bold shadow-[4px_4px_0_rgba(27,27,23,0.08)] transition-all hover:-translate-y-0.5 ${
         isCopied
-          ? "text-green-600 dark:text-green-400"
-          : "text-neutral-6 dark:text-neutral-dark-6 hover:text-neutral-8 dark:hover:text-neutral-dark-8"
+          ? "text-[var(--field-forest)]"
+          : "text-[var(--field-ink)] hover:text-[var(--field-rust)]"
       }`}
     >
       {isCopied ? (

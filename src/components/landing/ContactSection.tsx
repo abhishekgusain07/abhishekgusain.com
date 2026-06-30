@@ -15,7 +15,7 @@ type FormValues = {
 };
 
 const field =
-  "w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-white/45 transition-colors focus:border-neutral-orangeBg focus:outline-none focus:ring-1 focus:ring-neutral-orangeBg";
+  "w-full border border-[var(--field-line)] bg-[var(--field-panel)] px-4 py-3 text-sm text-[var(--field-ink)] placeholder:text-[var(--field-muted)] transition-colors focus:border-[var(--field-rust)] focus:outline-none focus:ring-1 focus:ring-[var(--field-rust)]";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -63,29 +63,31 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 px-4 py-20 sm:py-28">
-      <div className="relative mx-auto max-w-screen-lg overflow-hidden rounded-3xl bg-neutral-8 px-6 py-14 sm:px-12 dark:bg-neutral-dark-2">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-neutral-orangeBg/20 blur-3xl"
-        />
+    <section
+      id="contact"
+      className="scroll-mt-24 border-t border-[var(--field-line)] px-4 py-20 sm:py-28"
+    >
+      <div className="relative mx-auto max-w-screen-lg overflow-hidden border-2 border-[var(--field-ink)] bg-[var(--field-ink)] px-6 py-14 shadow-[12px_12px_0_rgba(27,27,23,0.12)] sm:px-12">
         <div className="relative mx-auto grid max-w-4xl items-center gap-10 lg:grid-cols-2">
           {/* Pitch */}
           <div className="text-center lg:text-left">
-            <h2 className="text-balance text-3xl font-semibold tracking-tighter text-white sm:text-4xl">
+            <p className="mb-4 flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-normal text-[var(--field-gold)] before:block before:h-0.5 before:w-9 before:bg-[var(--field-gold)] lg:justify-start">
+              Contact
+            </p>
+            <h2 className="field-serif text-balance text-3xl font-bold leading-tight text-[var(--field-panel)] sm:text-4xl">
               {FINAL_CTA.title}
             </h2>
-            <p className="mx-auto mt-5 max-w-md text-pretty text-base leading-relaxed text-neutral-4 lg:mx-0 dark:text-neutral-dark-7">
+            <p className="mx-auto mt-5 max-w-md text-pretty text-base leading-relaxed text-[#d8c8ad] lg:mx-0">
               {FINAL_CTA.body}
             </p>
             <button
               type="button"
               onClick={copyEmail}
-              className="group mt-6 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
+              className="group mt-6 inline-flex items-center gap-2 text-sm text-[#d8c8ad] transition-colors hover:text-[var(--field-panel)]"
             >
               <span>or email us directly: {CONTACT.email}</span>
               {copied ? (
-                <Check size={14} className="text-neutral-orangeBg" />
+                <Check size={14} className="text-[var(--field-gold)]" />
               ) : (
                 <Copy
                   size={14}
@@ -97,20 +99,20 @@ export function ContactSection() {
 
           {/* Form */}
           {done ? (
-            <div className="flex min-h-[18rem] flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-8 text-center">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-neutral-orangeBg/20 text-neutral-orangeBg">
+            <div className="flex min-h-[18rem] flex-col items-center justify-center border border-[var(--field-line)] bg-[rgba(255,250,240,0.08)] p-8 text-center">
+              <span className="inline-flex h-12 w-12 items-center justify-center border border-[var(--field-gold)] bg-[var(--field-panel)] text-[var(--field-forest)]">
                 <Check size={24} />
               </span>
-              <p className="mt-4 text-lg font-semibold text-white">
+              <p className="mt-4 text-lg font-bold text-[var(--field-panel)]">
                 Message sent.
               </p>
-              <p className="mt-1 text-sm text-white/60">
+              <p className="mt-1 text-sm text-[#d8c8ad]">
                 We&apos;ll get back to you shortly — usually within a day.
               </p>
               <button
                 type="button"
                 onClick={() => setDone(false)}
-                className="mt-5 text-sm font-medium text-neutral-orangeBg hover:underline"
+                className="mt-5 text-sm font-bold text-[var(--field-gold)] hover:underline"
               >
                 Send another →
               </button>
@@ -195,12 +197,12 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-neutral-orangeBg px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-1 inline-flex items-center justify-center gap-2 border border-[var(--field-panel)] bg-[var(--field-rust)] px-6 py-3 text-sm font-bold text-[var(--field-panel)] shadow-[5px_5px_0_rgba(255,250,240,0.12)] transition-all duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? "Sending…" : "Book my free audit"}
                 {!isSubmitting && <ArrowRight size={16} />}
               </button>
-              <p className="text-center text-xs text-white/45">
+              <p className="text-center text-xs text-[#d8c8ad]">
                 Free · no pitch · you keep the plan either way.
               </p>
             </form>

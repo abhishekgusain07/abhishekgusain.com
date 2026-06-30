@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <div className="field-surface">
       <SiteNav />
       <main>
         <Hero />
@@ -44,6 +44,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <SiteFooter />
-    </>
+    </div>
   );
 }

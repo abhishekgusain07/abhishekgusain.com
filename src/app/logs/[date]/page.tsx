@@ -144,27 +144,26 @@ export default async function LogPage({ params }: LogPageProps) {
   const sections = parseLogContent(content);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
-      <div className="fixed top-4 right-4 z-50">
+    <div className="field-surface min-h-screen">
+      <div className="no-print fixed right-4 top-4 z-50">
         <ThemeToggle />
       </div>
 
       <div className="mx-auto max-w-4xl p-4">
-        <div className="px-4 sm:px-6 md:px-8 py-4 w-full">
+        <div className="w-full px-4 py-4 sm:px-6 md:px-8">
           {/* Hero Section */}
           <div className="mb-8">
-            <div className="relative w-full h-48 bg-gradient-to-r from-neutral-2 to-neutral-3 dark:from-neutral-dark-2 dark:to-neutral-dark-3 rounded-lg overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent"></div>
+            <div className="field-panel relative h-48 w-full overflow-hidden">
               <div className="absolute bottom-0 left-0 p-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white font-bold text-xl">
+                  <div className="field-serif flex h-16 w-16 items-center justify-center border-2 border-[var(--field-ink)] bg-[var(--field-rust)] text-xl font-bold text-[var(--field-panel)]">
                     AG
                   </div>
                   <div>
-                    <h2 className="font-bold text-neutral-8 dark:text-neutral-dark-8 text-2xl">
+                    <h2 className="field-serif text-2xl font-bold text-[var(--field-ink)]">
                       Abhishek Gusain
                     </h2>
-                    <p className="text-neutral-6 dark:text-neutral-dark-6 text-sm">
+                    <p className="text-sm font-semibold text-[var(--field-muted)]">
                       engineer • builder • creator
                     </p>
                   </div>
@@ -174,10 +173,10 @@ export default async function LogPage({ params }: LogPageProps) {
           </div>
 
           {/* Navigation and Actions */}
-          <div className="flex justify-between items-center mb-8">
+          <div className="mb-8 flex items-center justify-between">
             <Link href="/logs">
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all h-9 px-4 hover:bg-neutral-2 dark:hover:bg-neutral-dark-2 text-neutral-6 dark:text-neutral-dark-6 hover:text-neutral-8 dark:hover:text-neutral-dark-8">
-                <ArrowLeft className="w-4 h-4" />
+              <button className="inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap border border-[var(--field-ink)] bg-[var(--field-panel)] px-4 text-sm font-bold text-[var(--field-ink)] shadow-[4px_4px_0_rgba(27,27,23,0.08)] transition-all hover:-translate-y-0.5 hover:text-[var(--field-rust)]">
+                <ArrowLeft className="h-4 w-4" />
                 Back to Logs
               </button>
             </Link>
@@ -186,42 +185,44 @@ export default async function LogPage({ params }: LogPageProps) {
           </div>
 
           {/* Date Header */}
-          <div className="flex flex-col gap-4 mb-8">
+          <div className="mb-8 flex flex-col gap-4 border-b-2 border-[var(--field-ink)] pb-8">
             <div className="flex items-center gap-3">
-              <Calendar className="w-6 h-6 text-primary" />
+              <Calendar className="h-6 w-6 text-[var(--field-rust)]" />
               <div className="flex flex-col gap-1">
-                <h1 className="font-bold text-primary text-3xl">
+                <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-normal text-[var(--field-forest)] before:block before:h-0.5 before:w-9 before:bg-[var(--field-forest)]">
+                  Daily field note
+                </p>
+                <h1 className="field-serif text-4xl font-bold leading-none text-[var(--field-rust)]">
                   {formattedDateShort}
                 </h1>
-                <p className="text-neutral-5 dark:text-neutral-dark-5">
-                  {dayOfWeek}
-                </p>
+                <p className="text-[var(--field-muted)]">{dayOfWeek}</p>
               </div>
             </div>
-            <div className="bg-gradient-to-r from-primary via-primary/50 to-transparent h-px"></div>
           </div>
 
           {/* Content Sections */}
-          <div className="flex flex-col gap-6 px-6 border-l-2 border-primary/30 dark:border-primary/20">
+          <div className="flex flex-col gap-6 border-l-4 border-[var(--field-rust)] px-6">
             {sections.map((section, index) => (
               <div
                 key={index}
-                className="animate-in duration-500 fade-in-50"
+                className="field-card animate-in fade-in-50 p-5 duration-500"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <h3 className="font-semibold text-neutral-8 dark:text-neutral-dark-8 text-lg mb-3">
+                <h3 className="field-serif mb-3 text-xl font-bold text-[var(--field-ink)]">
                   {section.title}
                 </h3>
 
                 {/* List items */}
                 {section.items && section.items.length > 0 && (
-                  <ul className="flex flex-col gap-2 ml-4 mb-4">
+                  <ul className="mb-4 ml-4 flex flex-col gap-2">
                     {section.items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
-                        className="relative text-neutral-7 dark:text-neutral-dark-7 leading-relaxed"
+                        className="relative leading-relaxed text-[var(--field-muted)]"
                       >
-                        <span className="absolute -left-4 text-primary">•</span>
+                        <span className="absolute -left-4 text-[var(--field-rust)]">
+                          •
+                        </span>
                         {item}
                       </li>
                     ))}
@@ -230,7 +231,7 @@ export default async function LogPage({ params }: LogPageProps) {
 
                 {/* Regular content */}
                 {section.content.trim() && (
-                  <div className="text-neutral-7 dark:text-neutral-dark-7 leading-relaxed whitespace-pre-wrap">
+                  <div className="whitespace-pre-wrap leading-relaxed text-[var(--field-muted)]">
                     {section.content.trim()}
                   </div>
                 )}
@@ -239,12 +240,12 @@ export default async function LogPage({ params }: LogPageProps) {
           </div>
 
           {/* Footer */}
-          <div className="flex justify-between items-center pt-8 mt-8 border-t border-neutral-3 dark:border-neutral-dark-3">
-            <div className="flex items-center gap-2 text-neutral-5 dark:text-neutral-dark-5 text-sm">
-              <Clock className="w-4 h-4" />
+          <div className="mt-8 flex items-center justify-between border-t border-[var(--field-line)] pt-8">
+            <div className="flex items-center gap-2 text-sm text-[var(--field-muted)]">
+              <Clock className="h-4 w-4" />
               <span>1 entry</span>
             </div>
-            <div className="text-neutral-5 dark:text-neutral-dark-5 text-sm">
+            <div className="text-sm text-[var(--field-muted)]">
               Last updated: {formattedDateShort}
             </div>
           </div>

@@ -7,25 +7,25 @@
      Original oklch values converted to HSL triplets for this Tailwind v3 setup
      so `hsl(var(--x) / <alpha>)` opacity modifiers keep working. */
   :root {
-    --background: 48 33% 97%;
-    --foreground: 48 20% 20%;
-    --card: 48 33% 97%;
-    --card-foreground: 60 3% 8%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 51 19% 13%;
-    --primary: 15 56% 52%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 46 23% 89%;
-    --secondary-foreground: 51 8% 30%;
-    --muted: 44 29% 90%;
-    --muted-foreground: 50 2% 50%;
-    --accent: 46 23% 89%;
-    --accent-foreground: 51 19% 13%;
-    --destructive: 60 3% 8%;
+    --background: 39 48% 94%;
+    --foreground: 60 8% 10%;
+    --card: 38 100% 97%;
+    --card-foreground: 60 8% 10%;
+    --popover: 38 100% 97%;
+    --popover-foreground: 60 8% 10%;
+    --primary: 11 59% 45%;
+    --primary-foreground: 38 100% 97%;
+    --secondary: 39 31% 86%;
+    --secondary-foreground: 60 8% 10%;
+    --muted: 38 29% 86%;
+    --muted-foreground: 60 4% 38%;
+    --accent: 43 68% 51%;
+    --accent-foreground: 60 8% 10%;
+    --destructive: 11 59% 45%;
     --destructive-foreground: 0 0% 100%;
-    --border: 50 8% 84%;
-    --input: 51 8% 68%;
-    --ring: 15 56% 52%;
+    --border: 36 31% 76%;
+    --input: 36 31% 76%;
+    --ring: 11 59% 45%;
     --chart-1: 18 57% 44%;
     --chart-2: 251 85% 75%;
     --chart-3: 46 28% 82%;
@@ -39,31 +39,42 @@
     --sidebar-accent-foreground: 0 0% 20%;
     --sidebar-border: 0 0% 92%;
     --sidebar-ring: 0 0% 71%;
-    --radius: 0.5rem;
+    --radius: 0.375rem;
     --tracking-normal: 0em;
     --theme-transition-duration: 0.8s;
+    --field-ink: #1b1b17;
+    --field-muted: #64645d;
+    --field-paper: #f7f2e8;
+    --field-panel: #fffaf0;
+    --field-line: #d8c8ad;
+    --field-forest: #155c4a;
+    --field-rust: #b84a2f;
+    --field-gold: #d8a72d;
+    --field-blue: #2d668f;
+    --field-shadow: 0 18px 40px rgba(43, 32, 18, 0.12);
+    --field-block-shadow: 6px 6px 0 rgba(27, 27, 23, 0.08);
   }
 
   .dark {
-    --background: 60 3% 15%;
-    --foreground: 46 10% 74%;
-    --card: 60 3% 15%;
-    --card-foreground: 48 33% 97%;
-    --popover: 60 2% 18%;
-    --popover-foreground: 60 5% 89%;
-    --primary: 15 63% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 48 33% 97%;
-    --secondary-foreground: 60 2% 18%;
-    --muted: 60 4% 10%;
-    --muted-foreground: 51 9% 69%;
-    --accent: 48 11% 9%;
-    --accent-foreground: 51 26% 95%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 60 5% 23%;
-    --input: 53 5% 31%;
-    --ring: 15 63% 60%;
+    --background: 60 8% 10%;
+    --foreground: 39 48% 94%;
+    --card: 55 13% 16%;
+    --card-foreground: 39 48% 94%;
+    --popover: 55 13% 16%;
+    --popover-foreground: 39 48% 94%;
+    --primary: 11 59% 55%;
+    --primary-foreground: 38 100% 97%;
+    --secondary: 60 5% 23%;
+    --secondary-foreground: 39 48% 94%;
+    --muted: 60 5% 18%;
+    --muted-foreground: 39 14% 72%;
+    --accent: 43 68% 51%;
+    --accent-foreground: 60 8% 10%;
+    --destructive: 11 59% 55%;
+    --destructive-foreground: 38 100% 97%;
+    --border: 48 15% 34%;
+    --input: 48 15% 34%;
+    --ring: 11 59% 55%;
     --chart-1: 18 57% 44%;
     --chart-2: 251 85% 75%;
     --chart-3: 48 11% 9%;
@@ -75,8 +86,19 @@
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 60 3% 6%;
     --sidebar-accent-foreground: 46 10% 74%;
-    --sidebar-border: 0 0% 92%;
+    --sidebar-border: 48 15% 34%;
     --sidebar-ring: 0 0% 71%;
+    --field-ink: #f7f2e8;
+    --field-muted: #c5bda9;
+    --field-paper: #1b1b17;
+    --field-panel: #27241d;
+    --field-line: #5d5240;
+    --field-forest: #6bb39f;
+    --field-rust: #e06b4d;
+    --field-gold: #d8a72d;
+    --field-blue: #75a8cb;
+    --field-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    --field-block-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
   }
 
   * {
@@ -89,7 +111,13 @@
 
   body {
     @apply bg-background text-foreground selection:bg-primary/15 selection:text-foreground;
+    background:
+      linear-gradient(90deg, rgba(27, 27, 23, 0.045) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(27, 27, 23, 0.04) 1px, transparent 1px),
+      hsl(var(--background));
+    background-size: 38px 38px;
     font-family:
+      "Aptos",
       var(--font-sans),
       ui-sans-serif,
       system-ui,
@@ -100,6 +128,14 @@
       Arial,
       sans-serif;
     letter-spacing: var(--tracking-normal);
+  }
+
+  .dark body {
+    background:
+      linear-gradient(90deg, rgba(247, 242, 232, 0.055) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(247, 242, 232, 0.045) 1px, transparent 1px),
+      hsl(var(--background));
+    background-size: 38px 38px;
   }
 
   ::view-transition-group(root) {
@@ -133,6 +169,77 @@
   }
 }
 
+@layer components {
+  .field-surface {
+    --background: 39 48% 94%;
+    --foreground: 60 8% 10%;
+    --card: 38 100% 97%;
+    --card-foreground: 60 8% 10%;
+    --popover: 38 100% 97%;
+    --popover-foreground: 60 8% 10%;
+    --primary: 11 59% 45%;
+    --primary-foreground: 38 100% 97%;
+    --secondary: 39 31% 86%;
+    --secondary-foreground: 60 8% 10%;
+    --muted: 38 29% 86%;
+    --muted-foreground: 60 4% 38%;
+    --accent: 43 68% 51%;
+    --accent-foreground: 60 8% 10%;
+    --border: 36 31% 76%;
+    --input: 36 31% 76%;
+    --ring: 11 59% 45%;
+    --field-ink: #1b1b17;
+    --field-muted: #64645d;
+    --field-paper: #f7f2e8;
+    --field-panel: #fffaf0;
+    --field-line: #d8c8ad;
+    --field-forest: #155c4a;
+    --field-rust: #b84a2f;
+    --field-gold: #d8a72d;
+    --field-blue: #2d668f;
+    --field-shadow: 0 18px 40px rgba(43, 32, 18, 0.12);
+    --field-block-shadow: 6px 6px 0 rgba(27, 27, 23, 0.08);
+    min-height: 100vh;
+    background:
+      linear-gradient(90deg, rgba(27, 27, 23, 0.045) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(27, 27, 23, 0.04) 1px, transparent 1px),
+      var(--field-paper);
+    background-size: 38px 38px;
+    color: var(--field-ink);
+  }
+
+  .field-serif {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 0;
+  }
+
+  .field-card {
+    border: 1px solid var(--field-ink);
+    border-radius: 6px;
+    background: var(--field-panel);
+    box-shadow: var(--field-block-shadow);
+  }
+
+  .field-panel {
+    border: 2px solid var(--field-ink);
+    border-radius: 6px;
+    background: var(--field-panel);
+    box-shadow: var(--field-shadow);
+  }
+
+  .field-rule {
+    border-color: var(--field-line);
+  }
+
+  .field-ink-panel {
+    border: 1px solid var(--field-ink);
+    border-left: 6px solid var(--field-forest);
+    border-radius: 6px;
+    background: var(--field-ink);
+    color: var(--field-panel);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -158,6 +265,23 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @media print {
+    body {
+      background: var(--field-paper);
+    }
+
+    .no-print {
+      display: none !important;
+    }
+
+    section,
+    .field-card,
+    .field-panel {
+      break-inside: avoid;
+      box-shadow: none !important;
     }
   }
 }

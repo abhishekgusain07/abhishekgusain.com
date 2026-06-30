@@ -24,18 +24,18 @@ export function SiteNav() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-neutral-3 bg-white/80 backdrop-blur-md dark:border-neutral-dark-3 dark:bg-black/70"
-          : "border-b border-transparent"
+          ? "border-b-2 border-[var(--field-ink)] bg-[var(--field-paper)]/95 shadow-[0_8px_0_rgba(27,27,23,0.04)] backdrop-blur-sm"
+          : "border-b-2 border-[var(--field-ink)] bg-[var(--field-paper)]/85"
       )}
     >
       <nav className="mx-auto flex max-w-screen-lg items-center justify-between px-4 py-3.5">
         <Link
           href="/"
-          className="text-base font-semibold tracking-tight text-neutral-8 dark:text-neutral-dark-8"
+          className="field-serif text-lg font-bold tracking-normal text-[var(--field-ink)]"
           onClick={() => setOpen(false)}
         >
           Abhishek Gusain
-          <span className="text-neutral-orangeBg">.</span>
+          <span className="text-[var(--field-rust)]">.</span>
         </Link>
 
         {/* Desktop links */}
@@ -44,7 +44,7 @@ export function SiteNav() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-neutral-6 transition-colors hover:text-neutral-8 dark:text-neutral-dark-6 dark:hover:text-neutral-dark-8"
+              className="text-sm font-semibold text-[var(--field-muted)] transition-colors hover:text-[var(--field-rust)]"
             >
               {l.label}
             </a>
@@ -63,7 +63,7 @@ export function SiteNav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-3 text-neutral-8 dark:border-neutral-dark-3 dark:text-neutral-dark-8"
+            className="inline-flex h-9 w-9 items-center justify-center border border-[var(--field-ink)] bg-[var(--field-panel)] text-[var(--field-ink)]"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -72,14 +72,14 @@ export function SiteNav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-neutral-3 bg-white px-4 py-4 md:hidden dark:border-neutral-dark-3 dark:bg-black">
+        <div className="border-t border-[var(--field-ink)] bg-[var(--field-paper)] px-4 py-4 md:hidden">
           <div className="flex flex-col gap-1">
             {NAV_LINKS.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-2.5 text-sm text-neutral-7 hover:bg-neutral-2 dark:text-neutral-dark-7 dark:hover:bg-neutral-dark-2"
+                className="border-b border-[var(--field-line)] px-2 py-2.5 text-sm font-semibold text-[var(--field-ink)] hover:text-[var(--field-rust)]"
               >
                 {l.label}
               </a>

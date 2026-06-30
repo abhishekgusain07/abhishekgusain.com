@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import {
   PhoneCall,
   CalendarCheck,
@@ -70,11 +70,11 @@ export function HeroScene() {
   const reduce = useReducedMotion();
 
   return (
-    <div className="relative mx-auto w-full max-w-md px-2 sm:px-6">
+    <div className="relative mx-auto w-[calc(100vw-2rem)] max-w-md min-w-0 px-2 sm:w-full sm:px-6">
       {/* Background panel (clipped to rounded corners). The cards live in a
           separate, non-clipped layer on top so they can overhang the edges. */}
       <div
-        className="absolute inset-0 overflow-hidden rounded-3xl border border-neutral-3 bg-gradient-to-b from-neutral-2 to-neutral-1 dark:border-neutral-dark-3 dark:from-neutral-dark-2 dark:to-neutral-dark-1"
+        className="field-panel absolute inset-0 overflow-hidden rotate-1"
         style={
           BG_IMAGE
             ? {
@@ -85,17 +85,12 @@ export function HeroScene() {
             : undefined
         }
       >
-        {/* warm lamp glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-neutral-orangeBg/25 blur-3xl"
-        />
         {/* faint connector lines from centre toward the cards */}
         <svg
           aria-hidden
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
-          className="pointer-events-none absolute inset-0 h-full w-full text-neutral-orangeBg opacity-25"
+          className="pointer-events-none absolute inset-0 h-full w-full text-[var(--field-rust)] opacity-35"
         >
           <g
             fill="none"
@@ -112,12 +107,12 @@ export function HeroScene() {
       </div>
 
       {/* LIVE pill */}
-      <div className="absolute right-4 top-4 z-40 inline-flex items-center gap-1.5 rounded-full bg-neutral-8/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white sm:right-8 dark:bg-black/70">
+      <div className="absolute right-4 top-4 z-40 inline-flex items-center gap-1.5 border border-[var(--field-ink)] bg-[var(--field-ink)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-normal text-[var(--field-panel)] sm:right-8">
         <span className="relative flex h-2 w-2">
           {!reduce && (
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--field-forest)] opacity-75" />
           )}
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--field-forest)]" />
         </span>
         Live
       </div>
@@ -126,34 +121,14 @@ export function HeroScene() {
       <div className="relative z-20 flex min-h-[460px] items-center justify-center py-10">
         <Phone reduce={!!reduce} />
 
-        {CARDS.map((c, i) => (
-          <motion.div
-            key={c.label}
-            className={`absolute z-30 ${c.pos}`}
-            initial={{ opacity: 0, y: 14, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: c.delay, duration: 0.5, ease: "easeOut" }}
-          >
-            <motion.div
-              animate={reduce ? undefined : { y: [0, -6, 0] }}
-              transition={
-                reduce
-                  ? undefined
-                  : {
-                      duration: 4 + i * 0.6,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: c.delay,
-                    }
-              }
-            >
-              <ProofCard {...c} />
-            </motion.div>
-          </motion.div>
+        {CARDS.map((c) => (
+          <div key={c.label} className={`absolute z-30 ${c.pos}`}>
+            <ProofCard {...c} />
+          </div>
         ))}
       </div>
 
-      <p className="mt-3 text-center text-xs text-neutral-5 dark:text-neutral-dark-5">
+      <p className="mt-3 text-center text-xs font-semibold uppercase tracking-normal text-[var(--field-muted)]">
         While you were closed.
       </p>
     </div>
@@ -162,20 +137,20 @@ export function HeroScene() {
 
 function Phone({ reduce }: { reduce: boolean }) {
   return (
-    <div className="relative z-10 w-[214px] rounded-[2rem] border-[5px] border-neutral-8 bg-neutral-1 p-2 shadow-2xl dark:border-black dark:bg-neutral-dark-1">
+    <div className="relative z-10 w-[214px] rounded-[1.25rem] border-[5px] border-[var(--field-ink)] bg-[var(--field-paper)] p-2 shadow-[0_18px_34px_rgba(43,32,18,0.18)]">
       {/* speaker notch */}
-      <div className="mx-auto mb-2 h-1.5 w-16 rounded-full bg-neutral-8/25 dark:bg-white/15" />
+      <div className="mx-auto mb-2 h-1.5 w-16 rounded-full bg-[rgba(27,27,23,0.25)] dark:bg-[rgba(247,242,232,0.25)]" />
 
       {/* chat header */}
       <div className="flex items-center gap-2 px-2 pb-2">
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-orangeBg text-white">
+        <span className="flex h-7 w-7 items-center justify-center border border-[var(--field-ink)] bg-[var(--field-rust)] text-[var(--field-panel)]">
           <Sparkles size={13} />
         </span>
         <div className="leading-tight">
-          <p className="text-[11px] font-semibold text-neutral-8 dark:text-neutral-dark-8">
+          <p className="text-[11px] font-bold text-[var(--field-ink)]">
             AI Front Desk
           </p>
-          <p className="text-[9px] text-emerald-600 dark:text-emerald-500">
+          <p className="text-[9px] font-semibold text-[var(--field-forest)]">
             online · replies in seconds
           </p>
         </div>
@@ -184,35 +159,24 @@ function Phone({ reduce }: { reduce: boolean }) {
       {/* messages */}
       <div className="flex min-h-[150px] flex-col gap-1.5 px-2 pb-1">
         {CHAT.map((m, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: reduce ? 0 : 0.4 + i * 0.55,
-              duration: 0.35,
-            }}
-            className={m.from === "ai" ? "self-end" : "self-start"}
-          >
+          <div key={i} className={m.from === "ai" ? "self-end" : "self-start"}>
             <span
-              className={`inline-block max-w-[155px] rounded-2xl px-2.5 py-1.5 text-[10px] leading-snug ${
+              className={`inline-block max-w-[155px] rounded px-2.5 py-1.5 text-[10px] leading-snug ${
                 m.from === "ai"
-                  ? "rounded-br-sm bg-neutral-orangeBg text-white"
-                  : "rounded-bl-sm bg-neutral-3 text-neutral-8 dark:bg-neutral-dark-3 dark:text-neutral-dark-8"
+                  ? "rounded-br-sm border border-[var(--field-ink)] bg-[var(--field-rust)] text-[var(--field-panel)]"
+                  : "rounded-bl-sm border border-[var(--field-line)] bg-[#ede3d2] text-[var(--field-ink)] dark:bg-[var(--field-panel)]"
               }`}
             >
               {m.text}
             </span>
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* composer */}
-      <div className="mx-2 mb-1 mt-1 flex items-center justify-between rounded-full border border-neutral-3 px-3 py-1.5 dark:border-neutral-dark-3">
-        <span className="text-[9px] text-neutral-5 dark:text-neutral-dark-5">
-          Message…
-        </span>
-        <span className="text-[9px] text-neutral-orangeBg">↑</span>
+      <div className="mx-2 mb-1 mt-1 flex items-center justify-between border border-[var(--field-line)] bg-[var(--field-panel)] px-3 py-1.5">
+        <span className="text-[9px] text-[var(--field-muted)]">Message…</span>
+        <span className="text-[9px] text-[var(--field-rust)]">↑</span>
       </div>
     </div>
   );
@@ -220,19 +184,15 @@ function Phone({ reduce }: { reduce: boolean }) {
 
 function ProofCard({ icon: Icon, label, sub }: Card) {
   return (
-    <div className="flex items-center gap-2 rounded-xl border border-neutral-3 bg-white/95 px-2.5 py-1.5 shadow-md backdrop-blur-sm dark:border-neutral-dark-3 dark:bg-neutral-dark-1/95">
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-neutral-orangeBg/15 text-neutral-orangeBg">
+    <div className="flex items-center gap-2 border border-[var(--field-ink)] bg-[var(--field-panel)] px-2.5 py-1.5 shadow-[4px_4px_0_rgba(27,27,23,0.1)]">
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center border border-[var(--field-line)] bg-[var(--field-paper)] text-[var(--field-rust)]">
         <Icon size={13} />
       </span>
       <div className="leading-tight">
-        <p className="text-[10px] font-semibold text-neutral-8 dark:text-neutral-dark-8">
-          {label}
-        </p>
-        <p className="text-[9px] text-neutral-6 dark:text-neutral-dark-6">
-          {sub}
-        </p>
+        <p className="text-[10px] font-bold text-[var(--field-ink)]">{label}</p>
+        <p className="text-[9px] text-[var(--field-muted)]">{sub}</p>
       </div>
-      <span className="ml-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-500">
+      <span className="ml-0.5 text-[11px] font-bold text-[var(--field-forest)]">
         ✓
       </span>
     </div>

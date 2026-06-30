@@ -3,28 +3,25 @@ import { PROBLEM } from "../../../constants/agency";
 
 export function ProblemSection() {
   return (
-    <Section id="problem">
+    <Section id="problem" number="01">
       <div className="max-w-2xl">
         <Kicker>{PROBLEM.kicker}</Kicker>
         <SectionTitle>{PROBLEM.title}</SectionTitle>
-        <p className="mt-5 text-pretty text-base leading-relaxed text-neutral-7 dark:text-neutral-dark-7">
+        <p className="mt-5 text-pretty text-base leading-relaxed text-[var(--field-muted)]">
           {PROBLEM.body}
         </p>
       </div>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {PROBLEM.pains.map((p) => (
-          <div
-            key={p.label}
-            className="rounded-xl border border-neutral-3 bg-neutral-1 p-5 dark:border-neutral-dark-3 dark:bg-neutral-dark-1"
-          >
-            <p className="text-2xl font-semibold tracking-tight text-neutral-orangeBg">
+          <div key={p.label} className="field-card p-5">
+            <p className="field-serif text-3xl font-bold text-[var(--field-rust)]">
               {p.stat}
             </p>
-            <p className="mt-2 text-sm font-medium text-neutral-8 dark:text-neutral-dark-8">
+            <p className="mt-2 text-sm font-bold text-[var(--field-ink)]">
               {p.label}
             </p>
-            <p className="mt-1.5 text-xs leading-relaxed text-neutral-6 dark:text-neutral-dark-6">
+            <p className="mt-1.5 text-xs leading-relaxed text-[var(--field-muted)]">
               {p.detail}
             </p>
           </div>
